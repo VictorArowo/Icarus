@@ -8,6 +8,7 @@ export interface FormState {
 export interface Element {
   id: string;
   text: string;
+  icon: () => JSX.Element;
 }
 
 export interface Column {

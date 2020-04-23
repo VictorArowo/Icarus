@@ -15,6 +15,7 @@ import { Data, Column, Columns } from "./initialData";
 import { Element } from "./form";
 import { Dispatch, SetStateAction } from "react";
 import elementAtoms from "./elementAtoms";
+import DragIcon from "../icons/DragIcon";
 
 interface Reorder {
   (list: Element[], startIndex: number, endIndex: number): Element[];
@@ -87,16 +88,22 @@ export const getRenderItem = (items: Element[]) => (
 ) => {
   const item = items[rubric.source.index];
   return (
-    <>
-      <div
-        {...provided.draggableProps}
-        {...provided.dragHandleProps}
-        ref={provided.innerRef}
-        className={snapshot.isDragging ? "dragging" : ""}
-      >
-        {item.text}
+    <div
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+      ref={provided.innerRef}
+      className="flex justify-between px-5 py-6 bg-primary-background border border-gray-500 font-regular rounded items-center"
+    >
+      <div className="flex">
+        <div className="w-6 h-6 text-primary">{<item.icon />}</div>
+        <span className="ml-3 text-sm font-bold text-primary-text whitespace-no-wrap">
+          {item.text}
+        </span>
       </div>
-    </>
+      <div className="w-6 h-6 text-primary ml-3">
+        <DragIcon />
+      </div>
+    </div>
   );
 };
 

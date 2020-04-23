@@ -19,7 +19,7 @@ const Canvas: React.FC<Props> = ({ elements, setForm }) => {
     setForm({ ...elements, [uuid()]: [] });
   };
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-6/12 ml-3 bg-primary-background my-10 content-area overflow-auto ">
       <button onClick={addSection}>Add Section</button>
       <div>
         {Object.keys(elements).map((section) => {
@@ -31,7 +31,7 @@ const Canvas: React.FC<Props> = ({ elements, setForm }) => {
                     key={section}
                     {...provided.droppableProps}
                     ref={provided.innerRef}
-                    className="w-72 min-h-72 border border-red-500"
+                    className="w-full  border border-red-500"
                   >
                     <div>{section}</div>
                     {elements[section].map((elem, index) => (
