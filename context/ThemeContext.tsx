@@ -3,7 +3,7 @@ import { applyTheme } from "../themes/themeMapping";
 import { DEFAULT_THEME } from "../themes";
 
 export const ThemeContext = React.createContext({
-  theme: "base",
+  theme: "dark",
   changeTheme: () => {},
 });
 

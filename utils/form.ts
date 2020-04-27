@@ -1,4 +1,4 @@
-import uuid from "uuid/v4";
+import { v4 as uuid } from "uuid";
 
 export interface FormState {
   sections: Column[];
@@ -9,6 +9,8 @@ export interface Element {
   id: string;
   text: string;
   icon: () => JSX.Element;
+  title: string;
+  supporting: string;
 }
 
 export interface Column {
@@ -26,7 +28,7 @@ const initialData: { [key: string]: Element[] } = {
   //     },
   //   ],
   //   ColumnOrder: [column-1"],
-  [uuid()]: [],
+  "1": [],
 };
 
 export default initialData;

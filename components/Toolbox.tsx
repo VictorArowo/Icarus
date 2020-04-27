@@ -10,7 +10,7 @@ interface Props {}
 
 const Toolbox: React.FC<Props> = () => {
   return (
-    <div className="mt-10 bg-primary-background h-8/12">
+    <div className="mt-10 bg-primary-background h-8/12 shadow-xl w-60">
       <Droppable
         droppableId="toolbox"
         isDropDisabled={true}
@@ -50,7 +50,7 @@ const Toolbox: React.FC<Props> = () => {
                             <div className="w-6 h-6 text-primary">
                               {<elem.icon />}
                             </div>
-                            <span className="ml-3 text-sm font-bold text-primary-text">
+                            <span className="ml-3 text-sm font-bold text-primary-text whitespace-no-wrap">
                               {elem.text}
                             </span>
                           </div>

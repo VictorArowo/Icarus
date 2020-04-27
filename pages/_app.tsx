@@ -5,11 +5,14 @@ import "../styles.css";
 import { AppProps } from "next/app";
 
 import ThemeProvider from "../context/ThemeContext";
+import SelectedProvider from "../context/SelectedContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <SelectedProvider>
+        <Component {...pageProps} />
+      </SelectedProvider>
     </ThemeProvider>
   );
 }

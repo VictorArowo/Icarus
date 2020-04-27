@@ -6,7 +6,7 @@ import ToggleIcon from "../../icons/ToggleIcon";
 
 const Topbar = () => {
   return (
-    <div className="w-screen bg-primary-background h-32">
+    <div className="w-screen bg-primary-background h-24">
       <div className="flex w-full justify-between tems-center p-7">
         <div className="flex items-center">
           <div className="w-10 h-10 text-primary-text">
