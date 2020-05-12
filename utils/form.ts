@@ -11,6 +11,7 @@ export interface Element {
   icon: () => JSX.Element;
   title: string;
   supporting: string;
+  options?: string[];
 }
 
 export interface Column {

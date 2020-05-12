@@ -2,6 +2,7 @@ import { Element } from "./form";
 import SingleLineInput from "../components/renderers/SingleLineInput";
 import MultiLineInput from "../components/renderers/MultiLineInput";
 import { Dispatch, SetStateAction } from "react";
+import MultipleChoice from "../components/renderers/MultipleChoice";
 
 interface Props {
   elem: Element;
@@ -15,6 +16,10 @@ const Renderer: React.FC<Props> = ({ elem, index }) => {
 
   if (elem.text === "Multi-Line Text") {
     return <MultiLineInput elem={elem} index={index} />;
+  }
+
+  if (elem.text === "Multiple Choice") {
+    return <MultipleChoice elem={elem} index={index} />;
   }
 
   return <div>SIKE</div>;

@@ -10,6 +10,7 @@ import { SelectedContext } from "../../context/SelectedContext";
 import { Element } from "../../utils/form";
 import elementAtoms from "../../utils/elementAtoms";
 import DarkModeToggle from "./DarkModeToggle";
+import InputSpecificConfig from "./InputSpecificConfig";
 
 interface Props {
   form: { [key: string]: Element[] };
@@ -74,6 +75,7 @@ const InputConfig: React.FC<Props> = ({ form, setForm }) => {
             <div className="uppercase text-xs">Required</div>
             <DarkModeToggle />
           </div>
+          <InputSpecificConfig elem={data} />
         </div>
       ) : (
         <div>Select an input to start editing</div>
