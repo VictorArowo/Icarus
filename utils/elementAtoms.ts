@@ -31,7 +31,6 @@ export default [
     icon: CheckIcon,
     title: "Untitled input",
     supporting: "",
-    options: ["Option 1", "Option 2"],
   },
   {
     id: "4",

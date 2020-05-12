@@ -5,13 +5,17 @@ export interface FormState {
   ColumnOrder: string[];
 }
 
+interface Option {
+  name: string;
+  id: string;
+}
 export interface Element {
   id: string;
   text: string;
   icon: () => JSX.Element;
   title: string;
   supporting: string;
-  options?: string[];
+  options?: Option[];
 }
 
 export interface Column {

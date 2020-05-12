@@ -47,35 +47,35 @@ const InputConfig: React.FC<Props> = ({ form, setForm }) => {
   }, [data]);
 
   return (
-    <div className="w-72 min-h-full bg-primary-background mt-10 ml-8">
+    <div className="min-h-full mt-10 ml-8 w-72 bg-primary-background">
       {data ? (
         <div className="flex flex-col ">
-          <div className="text-primary-text font-bold py-5 border-b border-sec-background mb-1 pl-3 w-full uppercase text-sm">
+          <div className="w-full py-5 pl-3 mb-1 text-sm font-bold uppercase border-b text-primary-text border-sec-background">
             {data?.text}
           </div>
-          <div className="text-primary-text font-bold py-5 border-b border-sec-background mb-1 pl-3">
-            <div className="uppercase text-xs">Question</div>
+          <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+            <div className="text-xs uppercase">Question</div>
             <textarea
               value={data?.title}
               name="title"
               onChange={handleChange}
-              className="form-textarea border-gray-400 border bg-transparent mt-2"
+              className="mt-2 bg-transparent border border-gray-400 form-textarea"
             />
           </div>
-          <div className="text-primary-text font-bold py-5 border-b border-sec-background mb-1 pl-3">
-            <div className="uppercase text-xs">More Details</div>
+          <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+            <div className="text-xs uppercase">More Details</div>
             <textarea
               value={data?.supporting}
               name="supporting"
               onChange={handleChange}
-              className="form-textarea border-gray-400 border bg-transparent mt-2"
+              className="mt-2 bg-transparent border border-gray-400 form-textarea"
             />
           </div>
-          <div className="text-primary-text font-bold py-5 border-b border-sec-background mb-1 pl-3">
-            <div className="uppercase text-xs">Required</div>
+          <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+            <div className="text-xs uppercase">Required</div>
             <DarkModeToggle />
           </div>
-          <InputSpecificConfig elem={data} />
+          <InputSpecificConfig elem={data} form={form} setForm={setForm} />
         </div>
       ) : (
         <div>Select an input to start editing</div>

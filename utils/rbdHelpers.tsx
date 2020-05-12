@@ -38,6 +38,19 @@ interface Copy {
   ): Element[];
 }
 
+export const populateElement = (element: Element) => {
+  if (element.text === "Multiple Choice") {
+    return {
+      ...element,
+      options: [
+        { name: "Option 1", id: uuid() },
+        { name: "Option 2", id: uuid() },
+      ],
+    };
+  }
+  return element;
+};
+
 export const copy: Copy = (
   source,
   destination,
@@ -46,7 +59,7 @@ export const copy: Copy = (
 ) => {
   const sourceClone = Array.from(source);
   const destClone = Array.from(destination);
-  const copied = sourceClone[droppableSource.index];
+  const copied = populateElement(sourceClone[droppableSource.index]);
 
   destClone.splice(droppableDestination.index, 0, { ...copied, id: uuid() });
   return destClone;
@@ -92,15 +105,15 @@ export const getRenderItem = (items: Element[]) => (
       {...provided.draggableProps}
       {...provided.dragHandleProps}
       ref={provided.innerRef}
-      className="flex justify-between px-5 py-6 bg-primary-background border border-gray-500 font-regular rounded items-center"
+      className="flex items-center justify-between px-5 py-6 border border-gray-500 rounded bg-primary-background font-regular"
     >
       <div className="flex">
         <div className="w-6 h-6 text-primary">{<item.icon />}</div>
-        <span className="ml-3 text-sm font-bold text-primary-text whitespace-no-wrap">
+        <span className="ml-3 text-sm font-bold whitespace-no-wrap text-primary-text">
           {item.text}
         </span>
       </div>
-      <div className="w-6 h-6 text-primary ml-3">
+      <div className="w-6 h-6 ml-3 text-primary">
         <DragIcon />
       </div>
     </div>
@@ -142,14 +155,15 @@ export const onDragEnd: OnDragEndProps = (result, form, setForm) => {
       break;
 
     case "toolbox":
+      const response = copy(
+        elementAtoms,
+        form[destination.droppableId],
+        source,
+        destination
+      );
       setForm({
         ...form,
-        [destination.droppableId]: copy(
-          elementAtoms,
-          form[destination.droppableId],
-          source,
-          destination
-        ),
+        [destination.droppableId]: response,
       });
       break;
 

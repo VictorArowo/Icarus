@@ -6,9 +6,10 @@ import classNames from "../../utils/classNames";
 interface Props {
   elem: Element;
   index: number;
+  form: { [key: string]: Element[] };
 }
 
-const MultipleChoice: React.FC<Props> = ({ elem, index }) => {
+const MultipleChoice: React.FC<Props> = ({ elem, index, form }) => {
   const context = useContext(SelectedContext);
   const { changeSelected, selected } = context;
   const handleSelection = () => {
@@ -16,7 +17,7 @@ const MultipleChoice: React.FC<Props> = ({ elem, index }) => {
   };
   return (
     <div
-      className="w-full text-primary-text border-b border-sec-background"
+      className="w-full border-b text-primary-text border-sec-background"
       onClick={handleSelection}
       data-id={elem.id}
     >
@@ -26,19 +27,19 @@ const MultipleChoice: React.FC<Props> = ({ elem, index }) => {
           selected === elem.id ? "border-l-4 border-primary" : ""
         )}
       >
-        <div className="whitespace-no-wrap font-bold">Q {index + 1}</div>
-        <div className="ml-4 w-full">
+        <div className="font-bold whitespace-no-wrap">Q {index + 1}</div>
+        <div className="w-full ml-4">
           <div>{elem.title}</div>
-          <div className="text-sm opacity-75 mt-3">{elem.supporting}</div>
+          <div className="mt-3 text-sm opacity-75">{elem.supporting}</div>
           <div>
-            <label htmlFor="">
-              Option 1
-              <input type="radio" name="option1" id="" />
-            </label>
-            <label htmlFor="">
-              Option 2
-              <input type="radio" name="option2" id="" />
-            </label>
+            {elem.options?.map((opt) => {
+              return (
+                <div>
+                  {opt.name}
+                  <input type="text" disabled />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

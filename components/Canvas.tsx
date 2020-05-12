@@ -21,7 +21,7 @@ const Canvas: React.FC<Props> = ({ elements, setForm }) => {
     setForm({ ...elements, [uuid()]: [] });
   };
   return (
-    <div className="flex flex-col w-8/12 bg-primary-background h-full ml-5 my-10 content-area overflow-auto shadow-xl">
+    <div className="flex flex-col w-8/12 h-full my-10 ml-5 overflow-auto shadow-xl bg-primary-background content-area">
       {Object.keys(elements).map((section) => {
         return (
           <Droppable droppableId={section}>
@@ -48,7 +48,7 @@ const Canvas: React.FC<Props> = ({ elements, setForm }) => {
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
                         >
-                          <Renderer elem={elem} index={index} />
+                          <Renderer elem={elem} form={elements} index={index} />
                         </div>
                       )}
                     </Draggable>
