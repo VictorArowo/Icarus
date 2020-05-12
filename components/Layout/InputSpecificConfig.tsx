@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
+import { v4 as uuid } from "uuid";
 import { Element } from "../../utils/form";
 import { FormContext } from "../../context/FormContext";
 
@@ -31,6 +32,24 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
     });
   };
 
+  const handleOptionAddition = () => {
+    const elementId = elem.id;
+
+    setForm({
+      "1": form["1"].map((e, idx) =>
+        e.id === elementId
+          ? {
+              ...e,
+              options: [
+                ...form["1"][idx].options!,
+                { name: "New Input", id: uuid() },
+              ],
+            }
+          : e
+      ),
+    });
+  };
+
   return (
     <div>
       <h1>Options</h1>
@@ -45,6 +64,7 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
             />
           </label>
         ))}
+      <button onClick={handleOptionAddition}>Add option</button>
     </div>
   );
 };
