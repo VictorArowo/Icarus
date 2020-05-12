@@ -1,22 +1,17 @@
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { FormState, Element } from "../utils/form";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { v4 as uuid } from "uuid";
 import Renderer from "../utils/Renderer";
 import classNames from "../utils/classNames";
+import { FormContext } from "../context/FormContext";
 
-interface Props {
-  elements: {
-    [key: string]: Element[];
-  };
-  setForm: Dispatch<
-    SetStateAction<{
-      [key: string]: Element[];
-    }>
-  >;
-}
+interface Props {}
 
-const Canvas: React.FC<Props> = ({ elements, setForm }) => {
+const Canvas: React.FC<Props> = () => {
+  const context = useContext(FormContext);
+  const { form: elements, changeForm: setForm } = context;
+
   const addSection = () => {
     setForm({ ...elements, [uuid()]: [] });
   };

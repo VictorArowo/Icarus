@@ -11,18 +11,16 @@ import { Element } from "../../utils/form";
 import elementAtoms from "../../utils/elementAtoms";
 import DarkModeToggle from "./DarkModeToggle";
 import InputSpecificConfig from "./InputSpecificConfig";
+import { FormContext } from "../../context/FormContext";
 
-interface Props {
-  form: { [key: string]: Element[] };
-  setForm: Dispatch<
-    SetStateAction<{
-      [key: string]: Element[];
-    }>
-  >;
-}
+interface Props {}
 
-const InputConfig: React.FC<Props> = ({ form, setForm }) => {
+const InputConfig: React.FC<Props> = () => {
   const context = useContext(SelectedContext);
+  const formContext = useContext(FormContext);
+
+  const { form, changeForm: setForm } = formContext;
+
   const { selected } = context;
   const [data, setData] = useState<Element | undefined>(undefined);
 
@@ -75,7 +73,7 @@ const InputConfig: React.FC<Props> = ({ form, setForm }) => {
             <div className="text-xs uppercase">Required</div>
             <DarkModeToggle />
           </div>
-          <InputSpecificConfig elem={data} form={form} setForm={setForm} />
+          <InputSpecificConfig elem={data} />
         </div>
       ) : (
         <div>Select an input to start editing</div>

@@ -1,23 +1,22 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useContext } from "react";
 import { Element } from "../../utils/form";
+import { FormContext } from "../../context/FormContext";
 
 interface Props {
   elem: Element;
-  form: { [key: string]: Element[] };
-  setForm: Dispatch<
-    SetStateAction<{
-      [key: string]: Element[];
-    }>
-  >;
 }
 
-const InputSpecificConfig: React.FC<Props> = ({ elem, form, setForm }) => {
+const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
+  const context = useContext(FormContext);
+
+  const { form, changeForm: setForm } = context;
+
   const handleChange = (
     id: string,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const elementId = elem.id;
-    console.log(elementId);
+
     setForm({
       "1": form["1"].map((e, idx) =>
         e.id === elementId
