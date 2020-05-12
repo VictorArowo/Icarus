@@ -23,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
       <button
         type="button"
         className={type === "primary" ? primaryClasses : textClasses}
+        onClick={onClick}
       >
         {children}
       </button>

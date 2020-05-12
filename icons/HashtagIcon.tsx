@@ -7,7 +7,7 @@ const HashtagIcon = () => {
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      stroke-width="2"
+      strokeWidth="2"
       viewBox="0 0 24 24"
     >
       <path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>

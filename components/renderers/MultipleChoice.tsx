@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import { Element } from "../../utils/form";
 import { SelectedContext } from "../../context/SelectedContext";
 import classNames from "../../utils/classNames";
@@ -34,9 +34,9 @@ const MultipleChoice: React.FC<Props> = ({ elem, index, form }) => {
           <div>
             {elem.options?.map((opt) => {
               return (
-                <div>
-                  {opt.name}
-                  <input type="text" disabled />
+                <div key={opt.id} className="mb-2">
+                  <input type="radio" disabled className="mr-3" />
+                  <label>{opt.name}</label>
                 </div>
               );
             })}

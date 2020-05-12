@@ -45,7 +45,7 @@ const InputConfig: React.FC<Props> = () => {
   }, [data]);
 
   return (
-    <div className="min-h-full mt-10 ml-8 w-72 bg-primary-background">
+    <div className="mt-10 ml-8 overflow-auto rounded-md content-area w-72 bg-primary-background">
       {data ? (
         <div className="flex flex-col ">
           <div className="w-full py-5 pl-3 mb-1 text-sm font-bold uppercase border-b text-primary-text border-sec-background">

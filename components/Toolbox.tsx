@@ -10,7 +10,7 @@ interface Props {}
 
 const Toolbox: React.FC<Props> = () => {
   return (
-    <div className="mt-10 bg-primary-background h-8/12 shadow-xl w-60">
+    <div className="mt-10 rounded-md shadow-x bg-primary-background h-8/12 w-60">
       <Droppable
         droppableId="toolbox"
         isDropDisabled={true}
@@ -20,7 +20,7 @@ const Toolbox: React.FC<Props> = () => {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="flex flex-col border-primary-background border-t-2 border-b-2"
+            className="flex flex-col border-t-2 border-b-2 rounded-md border-primary-background"
           >
             {elementAtoms.map((elem, idx) => {
               const shouldRenderClone =
@@ -28,7 +28,7 @@ const Toolbox: React.FC<Props> = () => {
               return (
                 <React.Fragment key={elem.id}>
                   {shouldRenderClone ? (
-                    <div className="react-beatiful-dnd-copy flex px-5 my-4 ">
+                    <div className="flex px-5 my-4 react-beatiful-dnd-copy ">
                       <div className="w-6 h-6 text-primary">
                         {<elem.icon />}
                       </div>
@@ -44,17 +44,17 @@ const Toolbox: React.FC<Props> = () => {
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                           // className={snapshot.isDragging ? "dragging" : ""}
-                          className="flex group pl-5 pr-3 py-4 rounded-lg  justify-between hover:bg-sec-background border-transparent hover:border-primary-background border-r-2 transition duration-700 ease-in-out"
+                          className="flex justify-between py-4 pl-5 pr-3 transition duration-700 ease-in-out border-r-2 border-transparent rounded-lg group hover:bg-sec-background hover:border-primary-background"
                         >
                           <div className="flex">
                             <div className="w-6 h-6 text-primary">
                               {<elem.icon />}
                             </div>
-                            <span className="ml-3 text-sm font-bold text-primary-text whitespace-no-wrap">
+                            <span className="ml-3 text-sm font-bold whitespace-no-wrap text-primary-text">
                               {elem.text}
                             </span>
                           </div>
-                          <div className="w-6 h-6 text-primary opacity-0 group-hover:opacity-100 transition duration-700 ease-in-out ml-3">
+                          <div className="w-6 h-6 ml-3 transition duration-700 ease-in-out opacity-0 text-primary group-hover:opacity-100">
                             <DragIcon />
                           </div>
                         </div>

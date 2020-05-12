@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+import uuid from "react-uuid";
 import {
   DraggableLocation,
   Droppable,
@@ -80,7 +80,6 @@ export const move: Move = (
   droppableSource,
   droppableDestination
 ) => {
-  console.log(source, destination, droppableSource, droppableDestination);
   const sourceClone = Array.from(source);
   const destClone = Array.from(destination);
   const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -136,9 +135,8 @@ interface OnDragEndProps {
 
 export const onDragEnd: OnDragEndProps = (result, form, setForm) => {
   const { source, destination } = result;
-  console.log(source, destination);
+
   if (!destination) {
-    console.log("did not bang");
     return;
   }
 

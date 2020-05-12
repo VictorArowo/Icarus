@@ -1,7 +1,7 @@
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { FormState, Element } from "../utils/form";
 import { Dispatch, SetStateAction, useContext } from "react";
-import { v4 as uuid } from "uuid";
+import uuid from "react-uuid";
 import Renderer from "../utils/Renderer";
 import classNames from "../utils/classNames";
 import { FormContext } from "../context/FormContext";
@@ -16,10 +16,10 @@ const Canvas: React.FC<Props> = () => {
     setForm({ ...elements, [uuid()]: [] });
   };
   return (
-    <div className="flex flex-col w-8/12 h-full my-10 ml-5 overflow-auto shadow-xl bg-primary-background content-area">
+    <div className="flex flex-col w-8/12 h-full my-10 ml-5 overflow-auto rounded-md shadow-xl bg-primary-background content-area">
       {Object.keys(elements).map((section) => {
         return (
-          <Droppable droppableId={section}>
+          <Droppable droppableId={section} key={section}>
             {(provided, snapshot) => {
               return (
                 <div

@@ -1,7 +1,8 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
-import { v4 as uuid } from "uuid";
+import uuid from "react-uuid";
 import { Element } from "../../utils/form";
 import { FormContext } from "../../context/FormContext";
+import Button from "../Button";
 
 interface Props {
   elem: Element;
@@ -51,20 +52,23 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
   };
 
   return (
-    <div>
-      <h1>Options</h1>
+    <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+      <div className="mb-3 text-sm uppercase">Options</div>
       {form["1"]
         .find((b) => b.id === elem.id)!
         .options?.map((option) => (
-          <label>
+          <div key={option.id}>
             <input
               type="text"
               value={option.name}
               onChange={(e) => handleChange(option.id, e)}
+              className="mb-2 bg-transparent border border-gray-400 form-input"
             />
-          </label>
+          </div>
         ))}
-      <button onClick={handleOptionAddition}>Add option</button>
+      <Button type="primary" onClick={handleOptionAddition} className="mt-3">
+        Add option
+      </Button>
     </div>
   );
 };
