@@ -12,7 +12,6 @@ interface Option {
 export interface Element {
   id: string;
   text: string;
-  icon: () => JSX.Element;
   title: string;
   supporting: string;
   options?: Option[];

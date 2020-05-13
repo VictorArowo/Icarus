@@ -17,6 +17,7 @@ import { Dispatch, SetStateAction } from "react";
 import elementAtoms from "./elementAtoms";
 import DragIcon from "../icons/DragIcon";
 import populateElement from "./populateElement";
+import IconRenderer from "../components/renderers/IconRenderer";
 
 interface Reorder {
   (list: Element[], startIndex: number, endIndex: number): Element[];
@@ -95,7 +96,9 @@ export const getRenderItem = (items: Element[]) => (
       className="flex items-center justify-between px-5 py-6 border border-gray-500 rounded bg-primary-background font-regular"
     >
       <div className="flex">
-        <div className="w-6 h-6 text-primary">{<item.icon />}</div>
+        <div className="w-6 h-6 text-primary">
+          <IconRenderer elem={item} />
+        </div>
         <span className="ml-3 text-sm font-bold whitespace-no-wrap text-primary-text">
           {item.text}
         </span>

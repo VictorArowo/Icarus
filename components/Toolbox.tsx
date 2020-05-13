@@ -5,6 +5,7 @@ import classNames from "../utils/classNames";
 import elementAtoms from "../utils/elementAtoms";
 import { getRenderItem } from "../utils/rbdHelpers";
 import DragIcon from "../icons/DragIcon";
+import IconRenderer from "./renderers/IconRenderer";
 
 interface Props {}
 
@@ -30,7 +31,7 @@ const Toolbox: React.FC<Props> = () => {
                   {shouldRenderClone ? (
                     <div className="flex px-5 my-4 react-beatiful-dnd-copy ">
                       <div className="w-6 h-6 text-primary">
-                        {<elem.icon />}
+                        <IconRenderer elem={elem} />
                       </div>
                       <span className="ml-3 text-sm font-bold text-primary-text">
                         {elem.text}
@@ -48,7 +49,7 @@ const Toolbox: React.FC<Props> = () => {
                         >
                           <div className="flex">
                             <div className="w-6 h-6 text-primary">
-                              {<elem.icon />}
+                              <IconRenderer elem={elem} />
                             </div>
                             <span className="ml-3 text-sm font-bold whitespace-no-wrap text-primary-text">
                               {elem.text}
