@@ -1,14 +1,6 @@
-import {
-  useContext,
-  useEffect,
-  useState,
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { useContext, useEffect, useState, ChangeEvent } from "react";
 import { SelectedContext } from "../../context/SelectedContext";
 import { Element } from "../../utils/form";
-import elementAtoms from "../../utils/elementAtoms";
 import DarkModeToggle from "./DarkModeToggle";
 import InputSpecificConfig from "./InputSpecificConfig";
 import { FormContext } from "../../context/FormContext";
@@ -40,7 +32,11 @@ const InputConfig: React.FC<Props> = () => {
   useEffect(() => {
     setForm({
       ...form,
-      "1": form["1"].map((elem) => (elem.id === selected ? data! : elem)),
+      "1": form["1"].map((elem) =>
+        elem.id === selected
+          ? { ...elem, title: data!.title, supporting: data!.supporting }
+          : elem
+      ),
     });
   }, [data]);
 

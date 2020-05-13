@@ -13,7 +13,7 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
 
   const { form, changeForm: setForm } = context;
 
-  const handleChange = (
+  const handleOptionChange = (
     id: string,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -26,6 +26,26 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
               ...e,
               options: form["1"][idx].options!.map((opt) =>
                 opt.id === id ? { id, name: event.target.value } : opt
+              ),
+            }
+          : e
+      ),
+    });
+  };
+
+  const handleChoiceChange = (
+    index: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const elementId = elem.id;
+
+    setForm({
+      "1": form["1"].map((e, idx) =>
+        e.id === elementId
+          ? {
+              ...e,
+              choices: form["1"][idx].choices!.map((opt, optIdx) =>
+                optIdx === index ? event.target.value : opt
               ),
             }
           : e
@@ -51,25 +71,72 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
     });
   };
 
-  return (
-    <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
-      <div className="mb-3 text-sm uppercase">Options</div>
-      {form["1"]
-        .find((b) => b.id === elem.id)!
-        .options?.map((option) => (
-          <div key={option.id}>
-            <input
-              type="text"
-              value={option.name}
-              onChange={(e) => handleChange(option.id, e)}
-              className="mb-2 bg-transparent border border-gray-400 form-input"
-            />
-          </div>
-        ))}
-      <Button type="primary" onClick={handleOptionAddition} className="mt-3">
-        Add option
-      </Button>
-    </div>
-  );
+  if (elem.text === "Multiple Choice") {
+    return (
+      <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+        <div className="mb-3 text-sm uppercase">Options</div>
+        {form["1"]
+          .find((b) => b.id === elem.id)!
+          .options?.map((option) => (
+            <div key={option.id}>
+              <input
+                type="text"
+                value={option.name}
+                onChange={(e) => handleOptionChange(option.id, e)}
+                className="mb-2 bg-transparent border border-gray-400 form-input"
+              />
+            </div>
+          ))}
+        <Button type="primary" onClick={handleOptionAddition}>
+          Add option
+        </Button>
+      </div>
+    );
+  }
+
+  if (elem.text === "Yes/No") {
+    return (
+      <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+        <div className="mb-3 text-sm uppercase">Choices</div>
+        {form["1"]
+          .find((b) => b.id === elem.id)!
+          .choices?.map((choice, idx) => (
+            <div key={idx}>
+              <input
+                type="text"
+                value={choice}
+                onChange={(e) => handleChoiceChange(idx, e)}
+                className="mb-2 bg-transparent border border-gray-400 form-input"
+              />
+            </div>
+          ))}
+      </div>
+    );
+  }
+
+  if (elem.text === "Dropdown") {
+    return (
+      <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
+        <div className="mb-3 text-sm uppercase">Options</div>
+        {form["1"]
+          .find((b) => b.id === elem.id)!
+          .options?.map((option) => (
+            <div key={option.id}>
+              <input
+                type="text"
+                value={option.name}
+                onChange={(e) => handleOptionChange(option.id, e)}
+                className="mb-2 bg-transparent border border-gray-400 form-input"
+              />
+            </div>
+          ))}
+        <Button type="primary" onClick={handleOptionAddition}>
+          Add option
+        </Button>
+      </div>
+    );
+  }
+
+  return <div></div>;
 };
 export default InputSpecificConfig;

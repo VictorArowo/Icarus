@@ -16,6 +16,7 @@ export interface Element {
   title: string;
   supporting: string;
   options?: Option[];
+  choices?: string[];
 }
 
 export interface Column {

@@ -16,6 +16,7 @@ import { Element } from "./form";
 import { Dispatch, SetStateAction } from "react";
 import elementAtoms from "./elementAtoms";
 import DragIcon from "../icons/DragIcon";
+import populateElement from "./populateElement";
 
 interface Reorder {
   (list: Element[], startIndex: number, endIndex: number): Element[];
@@ -37,19 +38,6 @@ interface Copy {
     droppableDestination: DraggableLocation
   ): Element[];
 }
-
-export const populateElement = (element: Element) => {
-  if (element.text === "Multiple Choice") {
-    return {
-      ...element,
-      options: [
-        { name: "Option 1", id: uuid() },
-        { name: "Option 2", id: uuid() },
-      ],
-    };
-  }
-  return element;
-};
 
 export const copy: Copy = (
   source,
