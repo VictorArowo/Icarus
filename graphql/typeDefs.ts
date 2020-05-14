@@ -13,13 +13,17 @@ export default gql`
     id: String!
   }
 
-  type Form{
+  type Element{
   _id: ID!;
   text: String!;
   title: String!;
   supporting: String!;
   options: [Option!];
   choices: [String!];
+  }
+
+  type Form{
+    body: Element[]
   }
 
   # input RegisterInput {
@@ -30,12 +34,13 @@ export default gql`
   # }
 
   type Query{
-    getForms: [Form]
+    getAllForms: [Form]!
+    getForm: Form!
   }
 
   type Mutation {
     # register(registerInput: RegisterInput): User!
     # login(username: String!, password: String!): User!
-    addForm(form: Form!): Form!
+    addForm(body: Form): Form!
   }
 `;

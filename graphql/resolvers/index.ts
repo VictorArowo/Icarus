@@ -1,5 +1,5 @@
 // const userResolvers = require("./users");
-const formResolvers = require("./fom");
+const formResolvers = require("./form");
 
 export default {
   Mutation: {

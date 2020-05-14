@@ -5,7 +5,7 @@ interface Option {
   id: string;
 }
 
-export interface IForm extends Document {
+interface Element {
   id: string;
   text: string;
   title: string;
@@ -14,13 +14,12 @@ export interface IForm extends Document {
   choices?: string[];
 }
 
+export interface IForm extends Document {
+  body: Element[];
+}
+
 const formSchema: Schema = new Schema({
-  id: { type: SchemaTypes.String, required: true },
-  text: { type: SchemaTypes.String, required: true },
-  title: { type: SchemaTypes.String, required: true },
-  supporting: { type: SchemaTypes.String, required: true },
-  options: { type: SchemaTypes.Array, required: true },
-  createdAt: { type: SchemaTypes.Array, required: true },
+  body: { type: SchemaTypes.Array, required: true },
 });
 
 const collectionName = "Form";
