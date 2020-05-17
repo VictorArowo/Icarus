@@ -89,7 +89,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
                           <div key={opt.id} className="mb-2">
                             <input
                               type="radio"
-                              className="mr-3"
+                              className="mr-3 form-radio text-primary"
                               value={opt.name}
                               name={element.id}
                               onChange={handleChange}
@@ -120,6 +120,8 @@ const Respondent: NextPage<Props> = ({ form }) => {
                   </div>
                 );
 
+              case "Yes/No":
+                return <div>Yes/No</div>;
               default:
                 break;
             }
