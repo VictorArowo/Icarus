@@ -6,6 +6,8 @@ let connection: Connection | null = null;
 
 export const getConnection = async (): Promise<Connection> => {
   if (connection == null) {
+    console.log("creating connection");
+
     connection = await mongoose.createConnection(url, {
       bufferCommands: false, // Disable mongoose buffering
       bufferMaxEntries: 0, // and MongoDB driver buffering
@@ -14,5 +16,6 @@ export const getConnection = async (): Promise<Connection> => {
       useCreateIndex: true,
     });
   }
+
   return connection!;
 };

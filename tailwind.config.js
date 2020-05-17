@@ -19,7 +19,7 @@ module.exports = {
       }),
 
       fontFamily: {
-        regular: ["Merriweather", ...defaultTheme.fontFamily.sans],
+        regular: ["Quicksand", ...defaultTheme.fontFamily.sans],
         header: ["Luckiest Guy", ...defaultTheme.fontFamily.sans],
       },
     },

@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Transition from "./Transition";
 
+interface Option {
+  name: string;
+  id: string;
+}
 interface Props {
   disabled?: boolean;
+  options: Option[];
+  values: Record<string, string>;
+  setValues: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  elementId: string;
 }
 
-const Dropdown: React.FC<Props> = ({ disabled = false }) => {
+const Dropdown: React.FC<Props> = ({
+  disabled = false,
+  options,
+  values,
+  setValues,
+  elementId,
+}) => {
   const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    setValues({ ...values, [elementId]: options[0].name });
+  }, []);
 
   const handleClick = () => {
     !disabled && setActive(!active);
@@ -21,7 +39,7 @@ const Dropdown: React.FC<Props> = ({ disabled = false }) => {
               type="button"
               className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
             >
-              Options
+              {values[elementId]}
               <svg
                 className="w-5 h-5 ml-2 -mr-1"
                 fill="currentColor"
@@ -49,32 +67,16 @@ const Dropdown: React.FC<Props> = ({ disabled = false }) => {
           <div className="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-lg">
             <div className="bg-white rounded-md shadow-xs">
               <div className="py-1">
-                <a
-                  href="/"
-                  className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                >
-                  Account settings
-                </a>
-                <a
-                  href="/"
-                  className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                >
-                  Support
-                </a>
-                <a
-                  href="/"
-                  className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                >
-                  License
-                </a>
-                <form method="POST" action="#">
-                  <button
-                    type="submit"
-                    className="block w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                {options.map((option) => (
+                  <div
+                    className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                    onClick={() =>
+                      setValues({ ...values, [elementId]: option.name })
+                    }
                   >
-                    Sign out
-                  </button>
-                </form>
+                    {option.name}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

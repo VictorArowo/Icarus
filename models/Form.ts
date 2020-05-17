@@ -1,4 +1,4 @@
-import { Document, SchemaTypes, Schema, Connection, Model } from "mongoose";
+import { Document, Schema, models, model, Connection, Model } from "mongoose";
 
 interface Option {
   name: string;
@@ -19,7 +19,21 @@ export interface IForm extends Document {
 }
 
 const formSchema: Schema = new Schema({
-  body: { type: SchemaTypes.Array, required: true },
+  body: [
+    {
+      id: String,
+      text: String,
+      title: String,
+      supporting: String,
+      options: [
+        {
+          name: String,
+          id: String,
+        },
+      ],
+      choices: Array,
+    },
+  ],
 });
 
 const collectionName = "Form";
@@ -27,4 +41,5 @@ const collectionName = "Form";
 const User = (connection: Connection): Model<IForm> =>
   connection.model(collectionName, formSchema);
 
+// export default models[collectionName] || model(collectionName, formSchema);
 export default User;
