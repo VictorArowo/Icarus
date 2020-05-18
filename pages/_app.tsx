@@ -7,12 +7,18 @@ import { AppProps } from "next/app";
 
 import ThemeProvider from "../context/ThemeContext";
 import SelectedProvider from "../context/SelectedContext";
+import { ToastProvider } from "../utils/toast";
+import ToastContainer from "../utils/ToastContainer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <SelectedProvider>
-        <Component {...pageProps} />
+        <ToastProvider>
+          <ToastContainer>
+            <Component {...pageProps} />
+          </ToastContainer>
+        </ToastProvider>
       </SelectedProvider>
     </ThemeProvider>
   );

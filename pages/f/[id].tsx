@@ -187,6 +187,36 @@ const Respondent: NextPage<Props> = ({ form }) => {
                   </div>
                 );
 
+              case "Email Address":
+                return (
+                  <div key={element.id}>
+                    <p className="mt-5 text-xl text-gray-200">
+                      {element.title}
+                    </p>
+                    <input
+                      type="email"
+                      className="w-full text-gray-200 bg-transparent form-input"
+                      name={element.id}
+                      onChange={handleChange}
+                    />
+                  </div>
+                );
+
+              case "Website":
+                return (
+                  <div key={element.id}>
+                    <p className="mt-5 text-xl text-gray-200">
+                      {element.title}
+                    </p>
+                    <input
+                      type="url"
+                      className="w-full text-gray-200 bg-transparent form-input"
+                      name={element.id}
+                      onChange={handleChange}
+                    />
+                  </div>
+                );
+
               default:
                 break;
             }

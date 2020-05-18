@@ -7,6 +7,8 @@ import YesNoToggle from "../components/renderers/YesNoToggle";
 import DropdownRenderer from "../components/renderers/DropdownRenderer";
 import DateInput from "../components/renderers/DateInput";
 import TimeInput from "../components/renderers/TimeInput";
+import EmailInput from "../components/renderers/EmailInput";
+import WebsiteInput from "../components/renderers/WebsiteInput";
 
 interface Props {
   elem: Element;
@@ -45,6 +47,14 @@ const Renderer: React.FC<Props> = ({ elem, index, form }) => {
 
   if (elem.text === "Time") {
     return <TimeInput elem={elem} index={index} />;
+  }
+
+  if (elem.text === "Email Address") {
+    return <EmailInput elem={elem} index={index} />;
+  }
+
+  if (elem.text === "Website") {
+    return <WebsiteInput elem={elem} index={index} />;
   }
 
   return <div>SIKE</div>;
