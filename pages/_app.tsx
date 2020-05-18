@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/tailwind.css";
 import "../styles.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { AppProps } from "next/app";
 

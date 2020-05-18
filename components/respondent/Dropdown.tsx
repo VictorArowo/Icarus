@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Transition from "./Transition";
+import Transition from "../Transition";
 
 interface Option {
   name: string;
@@ -69,6 +69,7 @@ const Dropdown: React.FC<Props> = ({
               <div className="py-1">
                 {options.map((option) => (
                   <div
+                    key={option.id}
                     className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                     onClick={() =>
                       setValues({ ...values, [elementId]: option.name })

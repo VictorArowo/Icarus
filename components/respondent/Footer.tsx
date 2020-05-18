@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="absolute bottom-0 flex items-center justify-between w-full h-16 bg-sec-background">
+    <div className="fixed bottom-0 flex items-center justify-between w-full h-16 bg-sec-background">
       <div className="flex items-center">
         <img className="w-auto h-16" src="/logo.png" alt="" />
         <span className="text-2xl font-bold tracking-widest text-primary font-header">
