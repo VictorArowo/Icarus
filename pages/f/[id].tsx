@@ -43,6 +43,19 @@ const Respondent: NextPage<Props> = ({ form }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async () => {
+    await fetch(`/api/forms/${id}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ formId: id, response: { ...values } }),
+    });
+
+    router.push("/formResponse");
+  };
+
   return (
     <div className="overflow-auto bg-primary-background">
       <div className="max-w-5xl min-h-screen mx-auto">
@@ -222,7 +235,10 @@ const Respondent: NextPage<Props> = ({ form }) => {
             }
           })}
 
-          <span className="flex items-center justify-center mt-12 rounded-md shadow-sm">
+          <span
+            className="flex items-center justify-center mt-12 rounded-md shadow-sm"
+            onClick={handleSubmit}
+          >
             <button
               type="button"
               className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"

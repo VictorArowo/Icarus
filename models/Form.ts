@@ -41,5 +41,4 @@ const collectionName = "Form";
 const User = (connection: Connection): Model<IForm> =>
   connection.model(collectionName, formSchema);
 
-// export default models[collectionName] || model(collectionName, formSchema);
 export default User;
