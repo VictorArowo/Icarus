@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import classNames from "../utils/classNames";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -37,13 +38,18 @@ const Login = () => {
           initialValues={{ email: "", password: "" }}
           validationSchema={LoginSchema}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
-            setSubmitting(false);
+            setTimeout(() => {
+              console.log(values);
+              setSubmitting(false);
+            }, 4000);
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, isValidating, errors }) => (
             <Form className="mt-8">
               <div className="mt-6">
+                <div>
+                  {isSubmitting.toString()} - {isValidating.toString()}
+                </div>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-5 text-gray-700"
@@ -56,9 +62,18 @@ const Login = () => {
                     type="email"
                     name="email"
                     required
-                    className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none focus:shadow-outline-orange focus:border-primary sm:text-sm sm:leading-5"
+                    className={classNames(
+                      "block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none  sm:text-sm sm:leading-5",
+                      errors.email
+                        ? "focus:border-red-300 focus:shadow-outline-red"
+                        : "focus:shadow-outline-orange"
+                    )}
                   />
-                  <ErrorMessage name="email" component="div" />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-sm text-red-600"
+                  />
                 </div>
               </div>
 
@@ -76,9 +91,18 @@ const Login = () => {
                       type="password"
                       name="password"
                       required
-                      className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none focus:shadow-outline-yellow focus:border-primary sm:text-sm sm:leading-5"
+                      className={classNames(
+                        "block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none  sm:text-sm sm:leading-5",
+                        errors.password
+                          ? "focus:border-red-300 focus:shadow-outline-red"
+                          : "focus:shadow-outline-orange"
+                      )}
                     />
-                    <ErrorMessage name="password" component="div" />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="text-sm text-red-600"
+                    />
                   </div>
                 </div>
               </div>
@@ -98,7 +122,11 @@ const Login = () => {
                 <span className="block w-full shadow-sm">
                   <button
                     type="submit"
-                    className="flex justify-center w-full px-4 py-2 text-lg font-medium text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                    disabled={isSubmitting}
+                    className={classNames(
+                      "flex justify-center w-full px-4 py-2 text-lg font-medium text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700",
+                      isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                    )}
                   >
                     Login
                   </button>
