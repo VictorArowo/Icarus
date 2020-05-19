@@ -20,7 +20,7 @@ interface Context {
   currentUser: User;
   loginUser: (user: Source) => void;
 }
-const ToastContext = createContext<Context>({} as Context);
+export const AuthContext = createContext<Context>({} as Context);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User>({} as User);
@@ -35,8 +35,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     });
   };
   return (
-    <ToastContext.Provider value={{ currentUser, loginUser }}>
+    <AuthContext.Provider value={{ currentUser, loginUser }}>
       {children}
-    </ToastContext.Provider>
+    </AuthContext.Provider>
   );
 };

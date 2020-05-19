@@ -9,17 +9,20 @@ import ThemeProvider from "../context/ThemeContext";
 import SelectedProvider from "../context/SelectedContext";
 import { ToastProvider } from "../utils/toast";
 import ToastContainer from "../utils/ToastContainer";
+import { AuthProvider } from "../context/AuthenticationContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <SelectedProvider>
-        <ToastProvider>
-          <ToastContainer>
-            <Component {...pageProps} />
-          </ToastContainer>
-        </ToastProvider>
-      </SelectedProvider>
+      <AuthProvider>
+        <SelectedProvider>
+          <ToastProvider>
+            <ToastContainer>
+              <Component {...pageProps} />
+            </ToastContainer>
+          </ToastProvider>
+        </SelectedProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

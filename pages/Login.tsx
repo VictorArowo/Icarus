@@ -1,7 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import classNames from "../utils/classNames";
-
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthenticationContext";
+import useSWR from "swr";
+import fetcher from "../utils/fetcher";
+import { useToast } from "../utils/toast";
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
@@ -11,6 +15,10 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
+  const { currentUser, loginUser } = useContext(AuthContext);
+  const { addToast } = useToast();
+
+  // console.log('currentUser', currentUser)
   return (
     <div className="flex min-h-screen">
       <img
@@ -37,19 +45,31 @@ const Login = () => {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={LoginSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              console.log(values);
-              setSubmitting(false);
-            }, 4000);
+          onSubmit={async (values, { setSubmitting }) => {
+            try {
+              await fetch("http://localhost:3000/api/auth/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: values.email,
+                  password: values.password,
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data))
+                .catch(() => addToast("An error occured"));
+            } catch (error) {
+              console.log("error");
+              addToast("An error occured");
+            }
+            setSubmitting(false);
           }}
         >
           {({ isSubmitting, isValidating, errors }) => (
             <Form className="mt-8">
               <div className="mt-6">
-                <div>
-                  {isSubmitting.toString()} - {isValidating.toString()}
-                </div>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-5 text-gray-700"
