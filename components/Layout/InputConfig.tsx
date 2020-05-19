@@ -72,7 +72,9 @@ const InputConfig: React.FC<Props> = () => {
           <InputSpecificConfig elem={data} />
         </div>
       ) : (
-        <div>Select an input to start editing</div>
+        <div className="flex items-center justify-center h-full text-2xl text-center text-primary-text">
+          Select an input to <br /> start editing
+        </div>
       )}
     </div>
   );

@@ -44,7 +44,6 @@ const Toolbox: React.FC<Props> = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          // className={snapshot.isDragging ? "dragging" : ""}
                           className="flex justify-between py-4 pl-5 pr-3 transition duration-700 ease-in-out border-r-2 border-transparent rounded-lg group hover:bg-sec-background hover:border-primary-background"
                         >
                           <div className="flex">
