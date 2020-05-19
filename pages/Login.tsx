@@ -1,3 +1,14 @@
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .min(8, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+});
+
 const Login = () => {
   return (
     <div className="flex min-h-screen">
@@ -22,65 +33,80 @@ const Login = () => {
           </span>
         </p>
 
-        <form className="mt-8">
-          <div className="mt-6">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
-              Email address
-            </label>
-            <div className="mt-1 shadow-sm">
-              <input
-                id="email"
-                type="email"
-                required
-                className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none focus:shadow-outline-orange focus:border-primary sm:text-sm sm:leading-5"
-              />
-            </div>
-          </div>
-
-          <div className="flex justify-between w-full mt-6 space-x-6">
-            <div className="w-full">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-5 text-gray-700"
-              >
-                Password
-              </label>
-              <div className="mt-1 shadow-sm">
-                <input
-                  id="password"
-                  type="password"
-                  required
-                  className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none focus:shadow-outline-yellow focus:border-primary sm:text-sm sm:leading-5"
-                />
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={LoginSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form className="mt-8">
+              <div className="mt-6">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-5 text-gray-700"
+                >
+                  Email address
+                </label>
+                <div className="mt-1 shadow-sm">
+                  <Field
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none focus:shadow-outline-orange focus:border-primary sm:text-sm sm:leading-5"
+                  />
+                  <ErrorMessage name="email" component="div" />
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div className="flex items-center justify-end mt-6">
-            <div className="text-sm leading-5">
-              <a
-                href="/"
-                className="font-bold transition duration-150 ease-in-out text-primary hover:text-indigo-500 focus:outline-none focus:underline"
-              >
-                Forgot your password?
-              </a>
-            </div>
-          </div>
+              <div className="flex justify-between w-full mt-6 space-x-6">
+                <div className="w-full">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium leading-5 text-gray-700"
+                  >
+                    Password
+                  </label>
+                  <div className="mt-1 shadow-sm">
+                    <Field
+                      id="password"
+                      type="password"
+                      name="password"
+                      required
+                      className="block w-full px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out border border-gray-300 appearance-none focus:outline-none focus:shadow-outline-yellow focus:border-primary sm:text-sm sm:leading-5"
+                    />
+                    <ErrorMessage name="password" component="div" />
+                  </div>
+                </div>
+              </div>
 
-          <div className="mt-6">
-            <span className="block w-full shadow-sm">
-              <button
-                type="submit"
-                className="flex justify-center w-full px-4 py-2 text-lg font-medium text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-              >
-                Login
-              </button>
-            </span>
-          </div>
-        </form>
+              <div className="flex items-center justify-end mt-6">
+                <div className="text-sm leading-5">
+                  <a
+                    href="/"
+                    className="font-bold transition duration-150 ease-in-out text-primary hover:text-indigo-500 focus:outline-none focus:underline"
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <span className="block w-full shadow-sm">
+                  <button
+                    type="submit"
+                    className="flex justify-center w-full px-4 py-2 text-lg font-medium text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  >
+                    Login
+                  </button>
+                </span>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

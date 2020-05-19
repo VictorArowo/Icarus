@@ -17,8 +17,10 @@
     "@types/react-datepicker": "^2.11.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/uuid": "^7.0.3",
+    "@types/yup": "^0.28.3",
     "apollo-server-micro": "^2.13.1",
     "bcryptjs": "^2.4.3",
+    "formik": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.13",
     "next": "9.4.0",
@@ -32,7 +34,8 @@
     "react-use": "^15.1.0",
     "react-uuid": "^1.0.2",
     "swr": "^0.2.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "yup": "^0.29.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.6",
