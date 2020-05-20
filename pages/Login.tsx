@@ -1,13 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import classNames from "../utils/classNames";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthenticationContext";
-import useSWR from "swr";
-import fetcher from "../utils/fetcher";
 import { useToast } from "../utils/toast";
 import { useRouter } from "next/dist/client/router";
 import cookie from "js-cookie";
+import nextCookie from "next-cookies";
+import { useEffect } from "react";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -17,16 +15,19 @@ const LoginSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const Login = () => {
-  const { currentUser, loginUser } = useContext(AuthContext);
+const Login = ({ token }: { token: string }) => {
   const { addToast } = useToast();
   const router = useRouter();
 
-  console.log("currentUser", currentUser);
   interface Values {
     email: string;
     password: string;
   }
+
+  useEffect(() => {
+    if (token) router.push("/dashboard");
+  }, []);
+
   const handleSubmit = async (values: Values) => {
     try {
       await fetch("http://localhost:3000/api/auth/login", {
@@ -172,6 +173,12 @@ const Login = () => {
       </div>
     </div>
   );
+};
+
+Login.getInitialProps = async (ctx) => {
+  const { token } = nextCookie(ctx);
+
+  return { token };
 };
 
 export default Login;

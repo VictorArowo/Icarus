@@ -19,11 +19,13 @@ interface Source {
 interface Context {
   currentUser: User;
   loginUser: (user: Source) => void;
+  isAuthenticated: boolean;
 }
 export const AuthContext = createContext<Context>({} as Context);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User>({} as User);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const loginUser = (user: Source) => {
     setCurrentUser({
@@ -33,9 +35,10 @@ export const AuthProvider: React.FC = ({ children }) => {
       memberSince: user.updated_at,
       picture: user.picture,
     });
+    setIsAuthenticated(true);
   };
   return (
-    <AuthContext.Provider value={{ currentUser, loginUser }}>
+    <AuthContext.Provider value={{ currentUser, loginUser, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

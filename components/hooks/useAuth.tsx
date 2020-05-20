@@ -1,13 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import nextCookie from "next-cookies";
+import { AuthContext } from "../../context/AuthenticationContext";
 
 const useAuth = ({ token }: any) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const router = useRouter();
+  const { loginUser } = useContext(AuthContext);
 
   useEffect(() => {
     const auth = async () => {
@@ -15,7 +14,6 @@ const useAuth = ({ token }: any) => {
         return router.push("/login");
       }
       setLoading(true);
-      setIsAuthenticated(false);
       try {
         const res = await fetch("http://localhost:3000/api/auth/initialize", {
           headers: {
@@ -23,9 +21,8 @@ const useAuth = ({ token }: any) => {
           },
         });
         const json = await res.json();
-        setData(json);
+        loginUser(json);
         setLoading(false);
-        setIsAuthenticated(true);
       } catch (error) {
         setError(error.message);
         setLoading(false);
@@ -35,7 +32,7 @@ const useAuth = ({ token }: any) => {
     auth();
   }, []);
 
-  return { isAuthenticated, data, loading, error };
+  return { loading };
 };
 
 export default useAuth;

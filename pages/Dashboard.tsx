@@ -4,9 +4,14 @@ import FloatingActionButton from "../components/FloatingActionButton";
 import Link from "next/link";
 import useAuth from "../components/hooks/useAuth";
 import nextCookie from "next-cookies";
+import Spinner from "../components/Spinner";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthenticationContext";
 
 const Dashboard: NextPage = ({ token }: any) => {
-  const { data, error, isAuthenticated, loading } = useAuth({ token });
+  useAuth({ token });
+
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <Layout>
@@ -16,6 +21,7 @@ const Dashboard: NextPage = ({ token }: any) => {
         </a>
       </Link>
       <div className="text-xl text-white">{isAuthenticated.toString()}</div>
+      <div>{!isAuthenticated && <Spinner fill="#ffffff" size={40} />}</div>
     </Layout>
   );
 };
