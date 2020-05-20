@@ -8,13 +8,17 @@ import { FormContext } from "../../context/FormContext";
 import useSWR, { mutate } from "swr";
 import fetcher from "../../utils/fetcher";
 import { useToast } from "../../utils/toast";
+import { AuthContext } from "../../context/AuthenticationContext";
 
 const Topbar = () => {
   const context = useContext(FormContext);
+  const authContext = useContext(AuthContext);
   const { addToast } = useToast();
 
   const { form } = context;
-
+  const {
+    currentUser: { id },
+  } = authContext;
   const handleClick = async () => {
     await fetch("/api/forms", {
       method: "POST",
@@ -22,7 +26,11 @@ const Topbar = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ body: [...form["1"]] }),
+      body: JSON.stringify({
+        body: [...form["1"]],
+        user: id,
+        created: new Date(),
+      }),
     });
     addToast("Form successfully created");
   };

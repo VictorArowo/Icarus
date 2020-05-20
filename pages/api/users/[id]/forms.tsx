@@ -1,17 +1,20 @@
-import { getConnection } from "../../../models";
+import { getConnection } from "../../../../models";
 import { NextApiRequest, NextApiResponse } from "next";
-import Form from "../../../models/Form";
+import Form from "../../../../models/Form";
 
 const connection = async () => await getConnection();
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
-
+  const { id } = req.query;
   switch (method) {
-    case "POST":
+    case "GET":
       try {
-        const form = await Form(await connection()).create(req.body);
-        res.status(201).json(form);
+        const forms = await Form(await connection()).find({
+          user: id as string,
+        });
+
+        res.status(200).json(forms);
         break;
       } catch (error) {
         res.status(500).json(error);

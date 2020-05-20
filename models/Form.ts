@@ -16,6 +16,8 @@ interface Element {
 
 export interface IForm extends Document {
   body: Element[];
+  user: string;
+  created: string;
 }
 
 const formSchema: Schema = new Schema({
@@ -34,6 +36,8 @@ const formSchema: Schema = new Schema({
       choices: Array,
     },
   ],
+  user: String,
+  created: String,
 });
 
 const collectionName = "Form";
