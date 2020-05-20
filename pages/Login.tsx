@@ -6,6 +6,9 @@ import { AuthContext } from "../context/AuthenticationContext";
 import useSWR from "swr";
 import fetcher from "../utils/fetcher";
 import { useToast } from "../utils/toast";
+import { useRouter } from "next/dist/client/router";
+import cookie from "js-cookie";
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
@@ -17,15 +20,43 @@ const LoginSchema = Yup.object().shape({
 const Login = () => {
   const { currentUser, loginUser } = useContext(AuthContext);
   const { addToast } = useToast();
+  const router = useRouter();
 
-  // console.log('currentUser', currentUser)
+  console.log("currentUser", currentUser);
+  interface Values {
+    email: string;
+    password: string;
+  }
+  const handleSubmit = async (values: Values) => {
+    try {
+      await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          cookie.set("token", data.access_token);
+          router.push("/dashboard");
+        })
+        .catch((error) => addToast(error.message));
+    } catch (error) {
+      console.log("error");
+      addToast("An error occured");
+    }
+  };
   return (
     <div className="flex min-h-screen">
       <img
         src="https://images.unsplash.com/photo-1517817748493-49ec54a32465?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
         className="object-cover w-6/12 bg-gray-800 "
       />
-      <div className="flex-shrink-0 w-6/12 px-20 mt-64 min-w-96">
+      <div className="flex-shrink-0 w-6/12 px-20 mt-32 min-w-96">
         <div className="flex items-center -ml-3">
           <img className="w-auto h-16" src="/logo.png" alt="" />
           <span className="text-2xl font-bold tracking-widest text-primary font-header">
@@ -46,24 +77,7 @@ const Login = () => {
           initialValues={{ email: "", password: "" }}
           validationSchema={LoginSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            try {
-              await fetch("http://localhost:3000/api/auth/login", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  email: values.email,
-                  password: values.password,
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => console.log(data))
-                .catch(() => addToast("An error occured"));
-            } catch (error) {
-              console.log("error");
-              addToast("An error occured");
-            }
+            await handleSubmit(values);
             setSubmitting(false);
           }}
         >
