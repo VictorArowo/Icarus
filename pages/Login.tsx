@@ -6,6 +6,7 @@ import { useRouter } from "next/dist/client/router";
 import cookie from "js-cookie";
 import nextCookie from "next-cookies";
 import { useEffect } from "react";
+import { NextPageContext } from "next";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -175,7 +176,7 @@ const Login = ({ token }: { token: string }) => {
   );
 };
 
-Login.getInitialProps = async (ctx) => {
+Login.getInitialProps = async (ctx: NextPageContext) => {
   const { token } = nextCookie(ctx);
 
   return { token };
