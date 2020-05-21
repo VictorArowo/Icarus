@@ -49,12 +49,10 @@ const Preview: NextPage<Props> = () => {
     <div className="overflow-auto bg-primary-background">
       <div className="max-w-5xl min-h-screen mx-auto">
         <h1 className="pt-10 text-4xl font-extrabold text-center text-primary-text">
-          Form Title Lorem
+          {elements.title}
         </h1>
         <h4 className="mt-3 text-xl font-medium text-center text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eum
-          veritatis consequuntur quaerat neque est eligendi ex magni delectus
-          nulla vel.
+          {elements.description}
         </h4>
         <div className="px-10 mx-auto mb-32">
           {form.body.map((element) => {
