@@ -10,11 +10,13 @@ import ReactDatePicker from "react-datepicker";
 import DateComponent from "../components/respondent/DateComponent";
 import TimeComponent from "../components/respondent/TimeComponent";
 import { FormContext } from "../context/FormContext";
+import ArrowLeftIcon from "../icons/ArrowLeftIcon";
 
 interface Props {}
 
 const Preview: NextPage<Props> = () => {
   const context = useContext(FormContext);
+  const router = useRouter();
   const { form: elements } = context;
   const form = {
     body: [...elements["1"]],
@@ -47,7 +49,15 @@ const Preview: NextPage<Props> = () => {
 
   return (
     <div className="overflow-auto bg-primary-background">
-      <div className="max-w-5xl min-h-screen mx-auto">
+      <div className="relative max-w-5xl min-h-screen mx-auto">
+        <div className="absolute top-10 left-10">
+          <div
+            className="w-10 h-10 cursor-pointer text-primary-text"
+            onClick={() => router.back()}
+          >
+            <ArrowLeftIcon />
+          </div>
+        </div>
         <h1 className="pt-10 text-4xl font-extrabold text-center text-primary-text">
           {elements.title}
         </h1>
@@ -223,8 +233,6 @@ const Preview: NextPage<Props> = () => {
           })}
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };
