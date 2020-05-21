@@ -1,4 +1,4 @@
-import { Element } from "./form";
+import { Element, FormState } from "./form";
 import SingleLineInput from "../components/renderers/SingleLineInput";
 import MultiLineInput from "../components/renderers/MultiLineInput";
 import MultipleChoice from "../components/renderers/MultipleChoice";
@@ -13,7 +13,7 @@ import WebsiteInput from "../components/renderers/WebsiteInput";
 interface Props {
   elem: Element;
   index: number;
-  form: { [key: string]: Element[] };
+  form: FormState;
 }
 
 const Renderer: React.FC<Props> = ({ elem, index, form }) => {

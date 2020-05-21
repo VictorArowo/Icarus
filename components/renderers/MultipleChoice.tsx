@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { Element } from "../../utils/form";
+import { Element, FormState } from "../../utils/form";
 import { SelectedContext } from "../../context/SelectedContext";
 import classNames from "../../utils/classNames";
 
 interface Props {
   elem: Element;
   index: number;
-  form: { [key: string]: Element[] };
+  form: FormState;
 }
 
 const MultipleChoice: React.FC<Props> = ({ elem, index, form }) => {

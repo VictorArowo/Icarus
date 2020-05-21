@@ -11,6 +11,7 @@ import { useToast } from "../../utils/toast";
 import { AuthContext } from "../../context/AuthenticationContext";
 import EyeIcon from "../../icons/EyeIcon";
 import { useRouter } from "next/router";
+import Editable from "../Editable";
 
 const Topbar = () => {
   const context = useContext(FormContext);
@@ -18,7 +19,7 @@ const Topbar = () => {
   const router = useRouter();
   const { addToast } = useToast();
 
-  const { form } = context;
+  const { form, changeForm } = context;
   const {
     currentUser: { id },
   } = authContext;
@@ -43,6 +44,13 @@ const Topbar = () => {
     router.push("/preview");
   };
 
+  const handleFormPropertyChange = (
+    name: "title" | "description",
+    value: string
+  ) => {
+    changeForm({ ...form, [name]: value });
+  };
+
   return (
     <div className="w-screen h-24 bg-primary-background">
       <div className="flex justify-between w-full tems-center p-7">
@@ -51,7 +59,19 @@ const Topbar = () => {
             <ArrowLeftIcon />
           </div>
 
-          <span className="ml-10 text-xl text-primary-text">Untitled Form</span>
+          <Editable
+            text={form.title}
+            name="title"
+            handleSubmit={handleFormPropertyChange}
+            className="ml-10 text-xl text-primary-text"
+          />
+
+          <Editable
+            text={form.description}
+            name="description"
+            handleSubmit={handleFormPropertyChange}
+            className="ml-10 text-lg text-gray-400"
+          />
         </div>
 
         <div>

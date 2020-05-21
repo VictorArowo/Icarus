@@ -12,7 +12,7 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 import { Data, Column, Columns } from "./initialData";
-import { Element } from "./form";
+import { Element, FormState } from "./form";
 import { Dispatch, SetStateAction } from "react";
 import elementAtoms from "./elementAtoms";
 import DragIcon from "../icons/DragIcon";
@@ -110,16 +110,11 @@ export const getRenderItem = (items: Element[]) => (
   );
 };
 
-interface Type {
-  [key: string]: Element[];
-}
 interface OnDragEndProps {
   (
     result: DropResult,
-    form: {
-      [key: string]: Element[];
-    },
-    setForm: (updated: Type) => void
+    form: FormState,
+    setForm: (updated: FormState) => void
   ): void;
 }
 
@@ -134,21 +129,12 @@ export const onDragEnd: OnDragEndProps = (result, form, setForm) => {
     case destination.droppableId:
       setForm({
         ...form,
-        [destination.droppableId]: reorder(
-          form[source.droppableId],
-          source.index,
-          destination.index
-        ),
+        "1": reorder(form["1"], source.index, destination.index),
       });
       break;
 
     case "toolbox":
-      const response = copy(
-        elementAtoms,
-        form[destination.droppableId],
-        source,
-        destination
-      );
+      const response = copy(elementAtoms, form["1"], source, destination);
       setForm({
         ...form,
         [destination.droppableId]: response,
@@ -156,15 +142,15 @@ export const onDragEnd: OnDragEndProps = (result, form, setForm) => {
       break;
 
     default:
-      setForm({
-        ...form,
-        ...move(
-          form[source.droppableId],
-          form[destination.droppableId],
-          source,
-          destination
-        ),
-      });
+      // setForm({
+      //   ...form,
+      //   ...move(
+      //     form[source.droppableId],
+      //     form[destination.droppableId],
+      //     source,
+      //     destination
+      //   ),
+      // });
       break;
   }
 };
