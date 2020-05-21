@@ -6,12 +6,15 @@ import { NextPageContext } from "next";
 import { AuthContext } from "../context/AuthenticationContext";
 import useSWR from "swr";
 import fetcher from "../utils/fetcher";
+import SingleForm from "../components/forms/SingleForm";
+import Loading from "../components/Loading";
 
 const Forms = ({ token }: any) => {
-  // useAuth({ token });
   token = token || localStorage.getItem("token");
+  useAuth({ token });
   const {
     currentUser: { id },
+    isAuthenticated,
   } = useContext(AuthContext);
   const [forms, setForms] = useState([]);
 
@@ -25,9 +28,18 @@ const Forms = ({ token }: any) => {
 
   return (
     <Layout>
+      <div>{(!isAuthenticated || !data) && <Loading />}</div>
+
       <h1 className="text-3xl font-extrabold text-gray-200">Your forms</h1>
 
-      <div>{forms && forms.map((form) => <div>{form._id}</div>)}</div>
+      <div>
+        {forms &&
+          forms.map((form) => (
+            <ul>
+              <SingleForm />
+            </ul>
+          ))}
+      </div>
     </Layout>
   );
 };

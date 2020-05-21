@@ -9,16 +9,20 @@ import useSWR, { mutate } from "swr";
 import fetcher from "../../utils/fetcher";
 import { useToast } from "../../utils/toast";
 import { AuthContext } from "../../context/AuthenticationContext";
+import EyeIcon from "../../icons/EyeIcon";
+import { useRouter } from "next/router";
 
 const Topbar = () => {
   const context = useContext(FormContext);
   const authContext = useContext(AuthContext);
+  const router = useRouter();
   const { addToast } = useToast();
 
   const { form } = context;
   const {
     currentUser: { id },
   } = authContext;
+
   const handleClick = async () => {
     await fetch("/api/forms", {
       method: "POST",
@@ -35,6 +39,10 @@ const Topbar = () => {
     addToast("Form successfully created");
   };
 
+  const handlePreview = () => {
+    router.push("/preview");
+  };
+
   return (
     <div className="w-screen h-24 bg-primary-background">
       <div className="flex justify-between w-full tems-center p-7">
@@ -48,17 +56,17 @@ const Topbar = () => {
 
         <div>
           <div className="flex justify-between w-40 sm:w-64">
-            <Button type="text">
+            <Button type="text" onClick={handlePreview}>
               <div className="w-5 h-5 mr-2">
-                <ShareIcon />
+                <EyeIcon />
               </div>
-              <span className="hidden sm:inline-block">Share</span>
+              <span className="hidden sm:inline-block">Preview</span>
             </Button>
             <Button type="primary" onClick={handleClick}>
               <div className="w-5 h-5 mr-2">
                 <SaveIcon />
               </div>
-              <span className="hidden sm:inline-block">Save</span>
+              <span className="hidden sm:inline-block">Create</span>
             </Button>
           </div>
         </div>

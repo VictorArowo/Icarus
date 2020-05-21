@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         return fetch("https://dev--3iltkce.auth0.com/userinfo", {
           headers: {
-            Authorization: `Bearer ${token} `,
+            Authorization: `Bearer ${token}`,
           },
         })
           .then((response) => response.json())

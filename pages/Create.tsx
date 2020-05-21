@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { DragDropContext, OnDragEndResponder } from "react-beautiful-dnd";
 import Canvas from "../components/Canvas";
 import Toolbox from "../components/Toolbox";
@@ -10,11 +10,8 @@ import InputConfig from "../components/Layout/InputConfig";
 import { FormContext } from "../context/FormContext";
 
 const Create = () => {
-  const [form, setForm] = useState(Form);
-
-  const changeForm = (updated: { [key: string]: Element[] }) => {
-    setForm(updated);
-  };
+  const context = useContext(FormContext);
+  const { form, changeForm } = context;
 
   return (
     <FormContext.Provider value={{ form, changeForm }}>
@@ -22,7 +19,7 @@ const Create = () => {
         <Topbar />
         <div className="flex">
           <DragDropContext
-            onDragEnd={(result) => onDragEnd(result, form, setForm)}
+            onDragEnd={(result) => onDragEnd(result, form, changeForm)}
           >
             <Toolbox />
             <Canvas />

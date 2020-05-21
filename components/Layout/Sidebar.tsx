@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import cookies from "js-cookie";
 import Transition from "../Transition";
 import DarkModeToggle from "./DarkModeToggle";
 import HomeIcon from "../../icons/HomeIcon";
@@ -11,6 +11,7 @@ import classNames from "../../utils/classNames";
 import SidebarItem from "./SidebarItem";
 import UserIcon from "../../icons/UserIcon";
 import PlusIcon from "../../icons/PlusIcon";
+import { useRouter } from "next/router";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -25,6 +26,7 @@ const Sidebar: React.FC<Props> = ({
   closeSidebar,
   hideSidebar,
 }) => {
+  const router = useRouter();
   const navItems = [
     {
       name: "Dashboard",
@@ -47,11 +49,16 @@ const Sidebar: React.FC<Props> = ({
       icon: <SettingsIcon />,
     },
   ];
+
+  const handleSignout = () => {
+    cookies.remove("token");
+    router.push("/");
+  };
   return (
     <div>
       {/* Off-canvas menu for mobile */}
       <div className={`${hideSidebarMenu ? "hidden " : ""}md:hidden`}>
-        <div className="fixed inset-0 flex z-40">
+        <div className="fixed inset-0 z-40 flex">
           <Transition
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -76,16 +83,16 @@ const Sidebar: React.FC<Props> = ({
             leaveTo="-translate-x-full"
             show={isSidebarOpen}
           >
-            <div className="relative flex-1 flex flex-col max-w-xs w-full  bg-sec-background">
-              <div className="absolute top-0 right-0 -mr-14 p-1">
+            <div className="relative flex flex-col flex-1 w-full max-w-xs bg-sec-background">
+              <div className="absolute top-0 right-0 p-1 -mr-14">
                 {isSidebarOpen && (
                   <button
-                    className="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
+                    className="flex items-center justify-center w-12 h-12 rounded-full focus:outline-none focus:bg-gray-600"
                     aria-label="Close sidebar"
                     onClick={closeSidebar}
                   >
                     <svg
-                      className="h-6 w-6 text-white"
+                      className="w-6 h-6 text-white"
                       stroke="currentColor"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -102,12 +109,12 @@ const Sidebar: React.FC<Props> = ({
               </div>
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
                 <div className="flex items-center flex-shrink-0 px-4">
-                  <img className="h-16 w-auto" src="/Logo.png" alt="Logo" />
-                  <span className="font-bold text-primary tracking-widest text-2xl font-header">
+                  <img className="w-auto h-16" src="/Logo.png" alt="Logo" />
+                  <span className="text-2xl font-bold tracking-widest text-primary font-header">
                     icarus
                   </span>
                 </div>
-                <nav className="mt-5 px-2">
+                <nav className="px-2 mt-5">
                   <>
                     {navItems.map((item, index) => (
                       <SidebarItem
@@ -123,20 +130,20 @@ const Sidebar: React.FC<Props> = ({
               <div>
                 <DarkModeToggle />
               </div>
-              <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
+              <div className="flex flex-shrink-0 p-4 border-t border-gray-200">
                 <a
                   href="#"
-                  className="flex-shrink-0 group block focus:outline-none"
+                  className="flex-shrink-0 block group focus:outline-none"
                 >
                   <div className="flex items-center">
-                    <div className="inline-block h-10 w-10 rounded-full text-primary-text">
+                    <div className="inline-block w-10 h-10 rounded-full text-primary-text">
                       <UserIcon />
                     </div>
                     <div className="ml-3">
-                      <p className="text-base leading-6 font-medium text-primary-text group-hover:text-gray-900">
+                      <p className="text-base font-medium leading-6 text-primary-text group-hover:text-gray-900">
                         Victor Arowo
                       </p>
-                      <p className="text-sm leading-5 font-medium text-secondary-text group-hover:text-gray-700 group-focus:underline transition ease-in-out duration-150">
+                      <p className="text-sm font-medium leading-5 transition duration-150 ease-in-out text-secondary-text group-hover:text-gray-700 group-focus:underline">
                         View profile
                       </p>
                     </div>
@@ -153,17 +160,17 @@ const Sidebar: React.FC<Props> = ({
       </div>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden md:flex md:flex-shrink-0 h-screen ">
+      <div className="hidden h-screen md:flex md:flex-shrink-0 ">
         <div className="flex flex-col w-64 border-r border-sec-background bg-sec-background">
-          <div className="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+          <div className="flex flex-col flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <img className="h-16 w-auto" src="/Logo.png" alt="Logo" />
-              <span className="font-bold text-primary tracking-widest text-2xl font-header">
+              <img className="w-auto h-16" src="/Logo.png" alt="Logo" />
+              <span className="text-2xl font-bold tracking-widest text-primary font-header">
                 icarus
               </span>
             </div>
             {/* Sidebar component, swap this element with another sidebar if you like */}
-            <nav className="mt-5 flex-1 px-2 bg-sec-background">
+            <nav className="flex-1 px-2 mt-5 bg-sec-background">
               {navItems.map((item, index) => (
                 <SidebarItem
                   icon={item.icon}
@@ -175,19 +182,19 @@ const Sidebar: React.FC<Props> = ({
             </nav>
           </div>
           <div>
-            <DarkModeToggle />
+            <button onClick={handleSignout}>Sign out</button>
           </div>
-          <div className="flex-shrink-0 flex border-t border-sec-background p-4 bg-primary-background">
-            <a href="#" className="flex-shrink-0 w-full group block">
+          <div className="flex flex-shrink-0 p-4 border-t border-sec-background bg-primary-background">
+            <a href="#" className="flex-shrink-0 block w-full group">
               <div className="flex items-center">
-                <div className="inline-block h-10 w-10 rounded-full text-primary-text">
+                <div className="inline-block w-10 h-10 rounded-full text-primary-text">
                   <UserIcon />
                 </div>
                 <div className="ml-3">
-                  <p className="text-base leading-6 font-medium text-primary-text group-hover:text-gray-900">
+                  <p className="text-base font-medium leading-6 text-primary-text group-hover:text-gray-900">
                     Victor Arowo
                   </p>
-                  <p className="text-sm leading-5 font-medium text-secondary-text group-hover:text-gray-700 group-focus:underline transition ease-in-out duration-150">
+                  <p className="text-sm font-medium leading-5 transition duration-150 ease-in-out text-secondary-text group-hover:text-gray-700 group-focus:underline">
                     View profile
                   </p>
                 </div>

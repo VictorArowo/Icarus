@@ -110,17 +110,16 @@ export const getRenderItem = (items: Element[]) => (
   );
 };
 
+interface Type {
+  [key: string]: Element[];
+}
 interface OnDragEndProps {
   (
     result: DropResult,
     form: {
       [key: string]: Element[];
     },
-    setForm: Dispatch<
-      SetStateAction<{
-        [key: string]: Element[];
-      }>
-    >
+    setForm: (updated: Type) => void
   ): void;
 }
 
