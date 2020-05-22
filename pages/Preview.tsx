@@ -22,8 +22,6 @@ const Preview: NextPage<Props> = () => {
     body: [...elements["1"]],
   };
 
-  console.log("form", form);
-
   const storage: Record<string, string> = {};
 
   const [values, setValues] = useState(

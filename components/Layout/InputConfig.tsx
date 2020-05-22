@@ -17,7 +17,9 @@ const InputConfig: React.FC<Props> = () => {
   const [data, setData] = useState<Element | undefined>(undefined);
 
   useEffect(() => {
-    setData(form["1"].find((elem) => elem.id === selected));
+    if (selected !== "") {
+      setData(form["1"].find((elem) => elem.id === selected));
+    }
   }, [selected]);
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -30,14 +32,16 @@ const InputConfig: React.FC<Props> = () => {
   };
 
   useEffect(() => {
-    setForm({
-      ...form,
-      "1": form["1"].map((elem) =>
-        elem.id === selected
-          ? { ...elem, title: data!.title, supporting: data!.supporting }
-          : elem
-      ),
-    });
+    if (data) {
+      setForm({
+        ...form,
+        "1": form["1"].map((elem) =>
+          elem.id === selected
+            ? { ...elem, title: data!.title, supporting: data!.supporting }
+            : elem
+        ),
+      });
+    }
   }, [data]);
 
   return (
