@@ -23,7 +23,9 @@ const EmailInput: React.FC<Props> = ({ elem, index }) => {
       <div
         className={classNames(
           "flex p-5 pb-10 ",
-          selected === elem.id ? "border-l-4 border-primary" : ""
+          selected === elem.id
+            ? "border-l-4 border-primary"
+            : "border-l-4 border-transparent"
         )}
       >
         <div className="font-bold whitespace-no-wrap">Q {index + 1}</div>

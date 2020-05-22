@@ -16,23 +16,25 @@ const MultiLineInput: React.FC<Props> = ({ elem, index }) => {
   };
   return (
     <div
-      className="w-full text-primary-text border-b border-sec-background"
+      className="w-full border-b text-primary-text border-sec-background"
       onClick={handleSelection}
       data-id={elem.id}
     >
       <div
         className={classNames(
           "flex p-5 pb-10 ",
-          selected === elem.id ? "border-l-4 border-primary" : ""
+          selected === elem.id
+            ? "border-l-4 border-primary"
+            : "border-l-4 border-transparent"
         )}
       >
-        <div className="whitespace-no-wrap font-bold">Q {index + 1}</div>
-        <div className="ml-4 w-full">
+        <div className="font-bold whitespace-no-wrap">Q {index + 1}</div>
+        <div className="w-full ml-4">
           <div>{elem.title}</div>
-          <div className="text-sm opacity-75 mt-3">{elem.supporting}</div>
-          <div className="items-center  py-2">
+          <div className="mt-3 text-sm opacity-75">{elem.supporting}</div>
+          <div className="items-center py-2">
             <textarea
-              className="form-textarea bg-transparent w-full text-primary-text mr-3 pt-4 leading-tight active:outline-none"
+              className="w-full pt-4 mr-3 leading-tight bg-transparent form-textarea text-primary-text active:outline-none"
               placeholder="Enter your answer"
               aria-label="Multi Line Text"
               rows={5}
