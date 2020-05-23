@@ -4,10 +4,7 @@ const SingleForm = () => {
   return (
     <div>
       <li>
-        <a
-          href="/"
-          className="block transition duration-150 ease-in-out rounded-lg hover:bg-gray-800 focus:outline-none focus:bg-gray-50"
-        >
+        <div className="block transition duration-150 ease-in-out rounded-lg cursor-pointer hover:bg-gray-800 focus:outline-none focus:bg-gray-50">
           <div className="flex items-center px-4 py-4 sm:px-6">
             <div className="flex items-center flex-1 min-w-0">
               <div className="flex-1 min-w-0 px-4 md:grid md:grid-cols-2 md:gap-4">
@@ -72,7 +69,7 @@ const SingleForm = () => {
               <div className="ml-5">More</div>
             </div>
           </div>
-        </a>
+        </div>
       </li>
     </div>
   );

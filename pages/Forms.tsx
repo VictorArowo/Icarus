@@ -8,6 +8,7 @@ import useSWR from "swr";
 import fetcher from "../utils/fetcher";
 import SingleForm from "../components/forms/SingleForm";
 import Loading from "../components/Loading";
+import { useRouter } from "next/router";
 
 const Forms = ({ token }: any) => {
   token = token || localStorage.getItem("token");
@@ -17,6 +18,7 @@ const Forms = ({ token }: any) => {
     isAuthenticated,
   } = useContext(AuthContext);
   const [forms, setForms] = useState([]);
+  const router = useRouter();
 
   const { data, error } = useSWR(
     `http://localhost:3000/api/users/${id}/forms`,
@@ -35,7 +37,10 @@ const Forms = ({ token }: any) => {
       <div>
         {forms &&
           forms.map((form) => (
-            <ul>
+            <ul
+              key={form._id}
+              onClick={() => router.push(`/forms/${form._id}`)}
+            >
               <SingleForm />
             </ul>
           ))}
