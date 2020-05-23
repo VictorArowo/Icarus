@@ -37,7 +37,7 @@ const Dropdown: React.FC<Props> = ({
           <span className="rounded-md shadow-sm">
             <button
               type="button"
-              className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
+              className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-transparent border border-gray-300 rounded-md hover:text-gray-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-300"
             >
               {values[elementId]}
               <svg
@@ -64,7 +64,7 @@ const Dropdown: React.FC<Props> = ({
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <div className="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-lg">
+          <div className="absolute right-0 z-10 w-56 mt-2 origin-top-right rounded-md shadow-lg">
             <div className="bg-white rounded-md shadow-xs">
               <div className="py-1">
                 {options.map((option) => (

@@ -23,7 +23,7 @@ const SidebarItem: React.FC<Props> = ({ name, icon, index }) => {
           index === 0 ? "" : "mt-1"
         )}
       >
-        <div className="h-6 w-6 mr-3">{icon}</div>
+        <div className="w-6 h-6 mr-3">{icon}</div>
         {name}
       </a>
     </Link>

@@ -18,6 +18,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
       break;
 
+    case "GET":
+      try {
+        const forms = await Form(await connection()).find();
+        res.status(200).json(forms);
+        break;
+      } catch (error) {
+        res.status(500).json(error);
+      }
+      break;
+
     default:
       res.status(500).json({ error: "Invalid HTTP verb" });
       break;
