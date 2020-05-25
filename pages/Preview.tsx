@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import useSwr from "swr";
 import { useRouter } from "next/dist/client/router";
 import { NextPage } from "next";
+import nextCookie from "next-cookies";
 import { Element } from "../utils/form";
 import Footer from "../components/respondent/Footer";
 import Dropdown from "../components/respondent/Dropdown";
@@ -11,10 +12,13 @@ import DateComponent from "../components/respondent/DateComponent";
 import TimeComponent from "../components/respondent/TimeComponent";
 import { FormContext } from "../context/FormContext";
 import ArrowLeftIcon from "../icons/ArrowLeftIcon";
+import useAuth from "../components/hooks/useAuth";
 
 interface Props {}
 
-const Preview: NextPage<Props> = () => {
+const Preview: NextPage<Props> = ({ token }: any) => {
+  token = token || localStorage.getItem("token");
+  useAuth({ token });
   const context = useContext(FormContext);
   const router = useRouter();
   const { form: elements } = context;
@@ -233,6 +237,12 @@ const Preview: NextPage<Props> = () => {
       </div>
     </div>
   );
+};
+
+Preview.getInitialProps = async (ctx: any) => {
+  const { token } = nextCookie(ctx);
+
+  return { token };
 };
 
 export default Preview;
