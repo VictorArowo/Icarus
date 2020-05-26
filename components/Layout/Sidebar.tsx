@@ -12,6 +12,7 @@ import SidebarItem from "./SidebarItem";
 import UserIcon from "../../icons/UserIcon";
 import PlusIcon from "../../icons/PlusIcon";
 import { useRouter } from "next/router";
+import SignoutIcon from "../../icons/SignoutIcon";
 
 interface Props {
   isSidebarOpen: boolean;
@@ -182,7 +183,15 @@ const Sidebar: React.FC<Props> = ({
             </nav>
           </div>
           <div>
-            <button onClick={handleSignout}>Sign out</button>
+            <button
+              className="flex mb-5 ml-3 text-white hover:text-gray-400"
+              onClick={handleSignout}
+            >
+              <div className="w-6 h-6 mr-2 text-red-600">
+                <SignoutIcon />
+              </div>
+              <p>Sign out</p>
+            </button>
           </div>
           <div className="flex flex-shrink-0 p-4 border-t border-sec-background bg-primary-background">
             <a href="#" className="flex-shrink-0 block w-full group">
