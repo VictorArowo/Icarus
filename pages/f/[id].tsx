@@ -9,6 +9,7 @@ import YesNoToggle from "../../components/respondent/YesNoToggle";
 import ReactDatePicker from "react-datepicker";
 import DateComponent from "../../components/respondent/DateComponent";
 import TimeComponent from "../../components/respondent/TimeComponent";
+import Loading from "../../components/Loading";
 
 interface Props {
   form: {
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const Respondent: NextPage<Props> = ({ form }) => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
@@ -44,6 +46,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     await fetch(`/api/forms/${id}`, {
       method: "POST",
       headers: {
@@ -52,12 +55,13 @@ const Respondent: NextPage<Props> = ({ form }) => {
       },
       body: JSON.stringify({ formId: id, response: { ...values } }),
     });
-
+    setLoading(false);
     router.push("/formResponse");
   };
 
   return (
     <div className="overflow-auto bg-primary-background">
+      {loading && <Loading />}
       <div className="max-w-5xl min-h-screen mx-auto">
         <h1 className="pt-10 text-4xl font-extrabold text-center text-primary-text">
           Form Title Lorem
