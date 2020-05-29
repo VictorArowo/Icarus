@@ -1,7 +1,12 @@
 import Footer from "../components/respondent/Footer";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const FormResponse = () => {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.back();
+  };
   return (
     <div className="bg-primary-background">
       <div className="flex flex-col items-center max-w-5xl min-h-screen mx-auto">
@@ -16,6 +21,7 @@ const FormResponse = () => {
           <button
             type="button"
             className="inline-flex items-center px-4 py-3 font-medium font-bold leading-5 transition duration-150 ease-in-out border border-transparent rounded-md text-md text-gray-50 bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            onClick={handleBack}
           >
             Submit another response
           </button>
