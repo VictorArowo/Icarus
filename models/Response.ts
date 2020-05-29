@@ -10,7 +10,7 @@ const formSchema: Schema = new Schema({
   response: [SchemaTypes.Mixed],
 });
 
-const collectionName = "Form";
+const collectionName = "Reponse";
 
 const User = (connection: Connection): Model<IResponse> =>
   connection.model(collectionName, formSchema);
