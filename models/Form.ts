@@ -1,4 +1,12 @@
-import { Document, Schema, models, model, Connection, Model } from "mongoose";
+import {
+  Document,
+  Schema,
+  models,
+  model,
+  Connection,
+  Model,
+  SchemaTypes,
+} from "mongoose";
 
 interface Option {
   name: string;
@@ -18,6 +26,7 @@ export interface IForm extends Document {
   body: Element[];
   user: string;
   created: string;
+  responses: any[];
 }
 
 const formSchema: Schema = new Schema({
@@ -40,6 +49,7 @@ const formSchema: Schema = new Schema({
   created: String,
   title: String,
   description: String,
+  responses: [SchemaTypes.Mixed],
 });
 
 const collectionName = "Form";

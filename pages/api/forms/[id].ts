@@ -1,6 +1,7 @@
 import { getConnection } from "../../../models";
 import { NextApiRequest, NextApiResponse } from "next";
 import Response from "../../../models/Response";
+import Form from "../../../models/Form";
 
 const connection = async () => await getConnection();
 
@@ -11,10 +12,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case "GET":
       try {
-        const responses = await Response(await connection()).find({
-          formId: id as string,
-        });
-        res.status(200).json(responses);
+        const form = await Form(await connection()).findById(id);
+        res.status(200).json(form);
       } catch (error) {
         res.status(500).json(error);
       }
@@ -22,8 +21,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     case "POST":
       try {
-        const response = await Response(await connection()).create(req.body);
-        res.status(201).json(response);
+        const form = await Form(await connection()).findById(id);
+        form?.responses.push(req.body);
+        await form?.save();
+
+        res.status(201).json({ message: "success" });
         break;
       } catch (error) {
         res.status(500).json(error);

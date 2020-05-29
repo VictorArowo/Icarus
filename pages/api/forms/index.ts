@@ -10,7 +10,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case "POST":
       try {
-        const form = await Form(await connection()).create(req.body);
+        const form = await Form(await connection()).create({
+          ...req.body,
+          responses: [],
+        });
         res.status(201).json(form);
         break;
       } catch (error) {
