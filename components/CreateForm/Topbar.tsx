@@ -3,7 +3,7 @@ import Button from "../Button";
 import ShareIcon from "../../icons/ShareIcon";
 import SaveIcon from "../../icons/SaveIcon";
 import ToggleIcon from "../../icons/ToggleIcon";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FormContext } from "../../context/FormContext";
 import useSWR, { mutate } from "swr";
 import fetcher from "../../utils/fetcher";
@@ -12,19 +12,21 @@ import { AuthContext } from "../../context/AuthenticationContext";
 import EyeIcon from "../../icons/EyeIcon";
 import { useRouter } from "next/router";
 import Editable from "../Editable";
+import Loading from "../Loading";
 
 const Topbar = () => {
   const context = useContext(FormContext);
   const authContext = useContext(AuthContext);
   const router = useRouter();
   const { addToast } = useToast();
-
+  const [loading, setLoading] = useState(false);
   const { form, changeForm } = context;
   const {
     currentUser: { id },
   } = authContext;
 
   const handleClick = async () => {
+    setLoading(true);
     await fetch("/api/forms", {
       method: "POST",
       headers: {
@@ -39,11 +41,16 @@ const Topbar = () => {
         description: form.description,
       }),
     });
-    addToast("Form successfully created");
+    setLoading(false);
+    addToast("Form created successfully");
   };
 
   const handlePreview = () => {
     router.push("/preview");
+  };
+
+  const handleBack = () => {
+    router.back();
   };
 
   const handleFormPropertyChange = (
@@ -55,9 +62,10 @@ const Topbar = () => {
 
   return (
     <div className="w-screen h-24 bg-primary-background">
+      {loading && <Loading />}
       <div className="flex justify-between w-full tems-center p-7">
         <div className="flex items-center">
-          <div className="w-10 h-10 text-primary-text">
+          <div className="w-10 h-10 text-primary-text" onClick={handleBack}>
             <ArrowLeftIcon />
           </div>
 
