@@ -12,7 +12,7 @@ const Index = () => {
             textShadow: "4px 2px 3px rgba(150, 150, 150, 1)",
           }}
         >
-          Building forms just got easier
+          Build forms the easy way
         </div>
         <div className="mt-5 text-lg">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis

@@ -9,7 +9,7 @@ import fetcher from "../utils/fetcher";
 import SingleForm from "../components/forms/SingleForm";
 import Loading from "../components/Loading";
 import { useRouter } from "next/router";
-import { FormState } from "../utils/form";
+import { FormState, Element } from "../utils/form";
 
 const Forms = ({ token }: any) => {
   token = token || localStorage.getItem("token");
@@ -18,7 +18,15 @@ const Forms = ({ token }: any) => {
     currentUser: { id },
     isAuthenticated,
   } = useContext(AuthContext);
-  const [forms, setForms] = useState<any>([]);
+  const [forms, setForms] = useState<
+    {
+      body: Element[];
+      _id: string;
+      created: string;
+      title: string;
+      description: string;
+    }[]
+  >([]);
   const router = useRouter();
 
   const { data, error } = useSWR(
@@ -42,7 +50,7 @@ const Forms = ({ token }: any) => {
               key={form._id}
               onClick={() => router.push(`/forms/${form._id}`)}
             >
-              <SingleForm />
+              <SingleForm form={form} />
             </ul>
           ))}
       </div>

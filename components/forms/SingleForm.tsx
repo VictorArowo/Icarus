@@ -1,6 +1,16 @@
 import Link from "next/link";
+import { Element } from "../../utils/form";
 
-const SingleForm = () => {
+interface Props {
+  form: {
+    body: Element[];
+    created: string;
+    title: string;
+    description: string;
+  };
+}
+
+const SingleForm: React.FC<Props> = ({ form: { body, created, title } }) => {
   return (
     <div>
       <li>
@@ -10,7 +20,7 @@ const SingleForm = () => {
               <div className="flex-1 min-w-0 px-4 md:grid md:grid-cols-2 md:gap-4">
                 <div>
                   <div className="text-lg font-medium leading-5 truncate text-primary">
-                    Untitled Form
+                    {title}
                   </div>
                   <div className="flex mt-2">
                     <div className="flex items-center text-sm leading-5 text-gray-300">
@@ -26,8 +36,10 @@ const SingleForm = () => {
                         />
                       </svg>
                       <span>
-                        Created on
-                        <time dateTime="2020-01-07"> January 7, 2020</time>
+                        Created on{" "}
+                        <time dateTime="2020-01-07">
+                          {new Date(created).toLocaleDateString()}
+                        </time>
                       </span>
                     </div>
                   </div>

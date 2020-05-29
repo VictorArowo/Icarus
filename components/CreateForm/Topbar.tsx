@@ -35,6 +35,8 @@ const Topbar = () => {
         body: [...form["1"]],
         user: id,
         created: new Date(),
+        title: form.title,
+        description: form.description,
       }),
     });
     addToast("Form successfully created");

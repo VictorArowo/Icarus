@@ -38,6 +38,8 @@ const formSchema: Schema = new Schema({
   ],
   user: String,
   created: String,
+  title: String,
+  description: String,
 });
 
 const collectionName = "Form";
