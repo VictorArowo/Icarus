@@ -1,6 +1,5 @@
 import { getConnection } from "../../../models";
 import { NextApiRequest, NextApiResponse } from "next";
-import Form from "../../../models/Form";
 import Response from "../../../models/Response";
 
 const connection = async () => await getConnection();
@@ -12,10 +11,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case "GET":
       try {
-        const form = await Form(await connection()).findById(id);
-        if (form) return res.status(200).json(form);
-
-        res.status(404).json({ error: "Form not found" });
+        const responses = await Response(await connection()).find({
+          formId: id as string,
+        });
+        res.status(200).json(responses);
       } catch (error) {
         res.status(500).json(error);
       }
