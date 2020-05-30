@@ -11,19 +11,22 @@ import { ToastProvider } from "../utils/toast";
 import ToastContainer from "../utils/ToastContainer";
 import { AuthProvider } from "../context/AuthenticationContext";
 import FormProvider from "../context/FormContext";
+import SelectedFormProvider from "../context/SelectedFormContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <AuthProvider>
         <FormProvider>
-          <SelectedProvider>
-            <ToastProvider>
-              <ToastContainer>
-                <Component {...pageProps} />
-              </ToastContainer>
-            </ToastProvider>
-          </SelectedProvider>
+          <SelectedFormProvider>
+            <SelectedProvider>
+              <ToastProvider>
+                <ToastContainer>
+                  <Component {...pageProps} />
+                </ToastContainer>
+              </ToastProvider>
+            </SelectedProvider>
+          </SelectedFormProvider>
         </FormProvider>
       </AuthProvider>
     </ThemeProvider>

@@ -2,14 +2,12 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import fetcher from "../../utils/fetcher";
 import Layout from "../../components/Layout/Layout";
+import { useEffect, useContext } from "react";
+import { SelectedFormContext } from "../../context/SelectedFormContext";
 
 const FormDetails = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const { data, error } = useSWR(`/api/forms/${id}`, fetcher);
-
-  return <Layout>{data && JSON.stringify(data)}</Layout>;
+  const { selected } = useContext(SelectedFormContext);
+  return <Layout>{JSON.stringify(selected)}</Layout>;
 };
 
 export default FormDetails;

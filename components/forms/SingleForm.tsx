@@ -7,6 +7,7 @@ interface Props {
     created: string;
     title: string;
     description: string;
+    responses: { formId: string; response: Record<string, string> };
   };
 }
 

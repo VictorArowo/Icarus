@@ -10,6 +10,7 @@ import SingleForm from "../components/forms/SingleForm";
 import Loading from "../components/Loading";
 import { useRouter } from "next/router";
 import { FormState, Element } from "../utils/form";
+import { SelectedFormContext } from "../context/SelectedFormContext";
 
 const Forms = ({ token }: any) => {
   token = token || localStorage.getItem("token");
@@ -18,6 +19,7 @@ const Forms = ({ token }: any) => {
     currentUser: { id },
     isAuthenticated,
   } = useContext(AuthContext);
+  const { changeSelected } = useContext(SelectedFormContext);
   const [forms, setForms] = useState<
     {
       body: Element[];
@@ -25,6 +27,7 @@ const Forms = ({ token }: any) => {
       created: string;
       title: string;
       description: string;
+      responses: { formId: string; response: Record<string, string> };
     }[]
   >([]);
   const router = useRouter();
@@ -48,7 +51,10 @@ const Forms = ({ token }: any) => {
           forms.map((form) => (
             <ul
               key={form._id}
-              onClick={() => router.push(`/forms/${form._id}`)}
+              onClick={() => {
+                changeSelected(form);
+                router.push("/forms/[id]", `/forms/${form._id}`);
+              }}
             >
               <SingleForm form={form} />
             </ul>
