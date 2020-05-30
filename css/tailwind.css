@@ -11,3 +11,80 @@ body {
   max-height: calc(100vh - theme("spacing.40"));
   min-height: calc(100vh - theme("spacing.40"));
 }
+
+.bounce {
+  -moz-animation: 6s ease-in-out infinite linear bounce;
+  -o-animation: 6s ease-in-out infinite linear bounce;
+  -webkit-animation: 6s ease-in-out infinite normal none running bounce;
+  animation: 6s ease-in-out infinite normal none running bounce;
+  transition: 6s ease-in-out transform;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+
+@-o-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+
+@-ms-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+@keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}

@@ -22,6 +22,10 @@ module.exports = {
         regular: ["Quicksand", ...defaultTheme.fontFamily.sans],
         header: ["Luckiest Guy", ...defaultTheme.fontFamily.sans],
       },
+
+      boxShadow: {
+        "3xl": "13px 7px 20px 15px rgba(88, 83, 83, 0.75)",
+      },
     },
   },
   variants: {
