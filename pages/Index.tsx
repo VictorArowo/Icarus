@@ -2,6 +2,8 @@ import Navbar from "../components/home/Navbar";
 import Link from "next/link";
 import Blob1 from "../components/blobs/Blob1";
 import Blob2 from "../components/blobs/Blob2";
+import TopographyPattern from "../components/patterns/TopographyPattern";
+import ShapesPattern from "../components/patterns/ShapesPattern";
 
 const Index = () => {
   return (
@@ -13,6 +15,12 @@ const Index = () => {
         </div>
         <div className="absolute right-0 w-64 h-64 -m-32 opacity-25 bottom-64">
           <Blob2 />
+        </div>
+        <div className="absolute left-0 w-32 h-32 text-gray-400 bottom-64">
+          <ShapesPattern />
+        </div>
+        <div className="absolute w-24 h-24 text-gray-400 right-8">
+          <TopographyPattern />
         </div>
         <div
           className="text-5xl font-extrabold tracking-wide text-gray-800"
