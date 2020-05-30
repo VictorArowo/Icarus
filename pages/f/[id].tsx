@@ -53,7 +53,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ formId: id, response: { ...values } }),
+      body: JSON.stringify({ ...values }),
     });
     setLoading(false);
     router.push("/formResponse");

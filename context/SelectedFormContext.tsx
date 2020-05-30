@@ -7,7 +7,7 @@ interface Form {
   created: string;
   title: string;
   description: string;
-  responses: { formId: string; response: Record<string, string> };
+  responses: Record<string, string>[];
 }
 
 interface Context {

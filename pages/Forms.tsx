@@ -27,7 +27,7 @@ const Forms = ({ token }: any) => {
       created: string;
       title: string;
       description: string;
-      responses: { formId: string; response: Record<string, string> };
+      responses: Record<string, string>[];
     }[]
   >([]);
   const router = useRouter();
