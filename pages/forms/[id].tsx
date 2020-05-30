@@ -1,10 +1,12 @@
 import Layout from "../../components/Layout/Layout";
 import { useEffect, useContext, useMemo } from "react";
 import { SelectedFormContext } from "../../context/SelectedFormContext";
+import ArrowLeftIcon from "../../icons/ArrowLeftIcon";
+import { useRouter } from "next/router";
 
 const FormDetails = () => {
   const { selected } = useContext(SelectedFormContext);
-
+  const router = useRouter();
   const responses = useMemo(() => {
     return selected.responses.reduce<Record<string, string[]>>((acc, curr) => {
       Object.keys(curr).map((key) => {
@@ -19,6 +21,14 @@ const FormDetails = () => {
   return (
     <Layout>
       <div className="flex flex-col">
+        <div className="absolute top-10 left-10">
+          <div
+            className="w-10 h-10 cursor-pointer text-primary-text"
+            onClick={() => router.back()}
+          >
+            <ArrowLeftIcon />
+          </div>
+        </div>
         <h1 className="text-3xl text-center text-gray-100">{selected.title}</h1>
         <h3 className="text-center text-gray-400">{selected.description}</h3>
         <div className="mt-10">
