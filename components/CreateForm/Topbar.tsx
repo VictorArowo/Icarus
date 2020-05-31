@@ -13,10 +13,13 @@ import { FormContext } from "../../context/FormContext";
 import { AuthContext } from "../../context/AuthenticationContext";
 
 import { useToast } from "../../utils/toast";
+import Link from "next/link";
+import { SelectedFormContext } from "../../context/SelectedFormContext";
 
 const Topbar = () => {
   const context = useContext(FormContext);
   const authContext = useContext(AuthContext);
+  const { changeSelected } = useContext(SelectedFormContext);
   const router = useRouter();
   const { addToast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -27,7 +30,7 @@ const Topbar = () => {
 
   const handleClick = async () => {
     setLoading(true);
-    await fetch("/api/forms", {
+    const response = await fetch("/api/forms", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -41,12 +44,11 @@ const Topbar = () => {
         description: form.description,
       }),
     });
-    setLoading(false);
-    addToast("Form created successfully");
-  };
 
-  const handlePreview = () => {
-    router.push("/preview");
+    const data = await response.json();
+    changeSelected(data);
+    setLoading(false);
+    router.push("/CreateResponse");
   };
 
   const handleBack = () => {
@@ -65,7 +67,10 @@ const Topbar = () => {
       {loading && <Loading />}
       <div className="flex justify-between w-full tems-center p-7">
         <div className="flex items-center">
-          <div className="w-10 h-10 text-primary-text" onClick={handleBack}>
+          <div
+            className="w-10 h-10 cursor-pointer text-primary-text"
+            onClick={handleBack}
+          >
             <ArrowLeftIcon />
           </div>
 
@@ -86,12 +91,16 @@ const Topbar = () => {
 
         <div>
           <div className="flex justify-between w-40 sm:w-64">
-            <Button type="text" onClick={handlePreview}>
-              <div className="w-5 h-5 mr-2">
-                <EyeIcon />
-              </div>
-              <span className="hidden sm:inline-block">Preview</span>
-            </Button>
+            <Link href="/preview">
+              <a>
+                <Button type="text">
+                  <div className="w-5 h-5 mr-2">
+                    <EyeIcon />
+                  </div>
+                  <span className="hidden sm:inline-block">Preview</span>
+                </Button>
+              </a>
+            </Link>
             <Button type="primary" onClick={handleClick}>
               <div className="w-5 h-5 mr-2">
                 <SaveIcon />
