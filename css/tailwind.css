@@ -69,12 +69,15 @@ body {
 @keyframes bounce {
   0% {
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    bottom: 0px;
   }
   50% {
     box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+    bottom: 15px;
   }
   100% {
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    bottom: 0px;
   }
 }
 @-webkit-keyframes bounce {

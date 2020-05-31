@@ -8,45 +8,48 @@ import Seperator from "../components/blobs/Seperator";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-blue-100">
-      <Navbar />
-      <div className="flex flex-col items-center">
-        <div className="absolute left-0 w-64 h-64 -m-32 opacity-25">
-          <Blob1 />
-        </div>
-        <div className="absolute right-0 w-64 h-64 -m-32 opacity-25 bottom-64">
-          <Blob2 />
-        </div>
-        <div className="absolute left-0 w-32 h-32 text-gray-300 bottom-64">
-          <ShapesPattern />
-        </div>
-        <div
-          className="text-5xl font-extrabold tracking-wide text-gray-800"
-          style={{
-            textShadow: "4px 2px 3px rgba(150, 150, 150, 1)",
-          }}
-        >
-          Build forms the easy way
-        </div>
-        <div className="mt-5 text-lg">Collect and view responses with ease</div>
-
-        <span className="inline-flex mt-16 shadow-sm">
-          <button
-            type="button"
-            className="inline-flex items-center px-12 py-5 text-xl font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+    <div className="bg-gray-50">
+      <div className="bg-blue-100">
+        <Navbar />
+        <div className="flex flex-col items-center">
+          <div className="absolute left-0 w-64 h-64 -m-32 opacity-25">
+            <Blob1 />
+          </div>
+          <div className="absolute right-0 w-64 h-64 -m-32 opacity-25">
+            <Blob2 />
+          </div>
+          <div className="absolute left-0 w-32 h-32 text-gray-300 bottom-64">
+            <ShapesPattern />
+          </div>
+          <div
+            className="text-5xl font-extrabold tracking-wide text-gray-800"
+            style={{
+              textShadow: "4px 2px 3px rgba(150, 150, 150, 1)",
+            }}
           >
-            <Link href="/register">
-              <a>Get started</a>
-            </Link>
-          </button>
-        </span>
-      </div>
+            Build forms the easy way
+          </div>
+          <div className="mt-5 text-lg">
+            Collect and view responses with ease
+          </div>
 
-      <div>
+          <span className="inline-flex mt-16 shadow-sm">
+            <button
+              type="button"
+              className="inline-flex items-center px-12 py-5 text-xl font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            >
+              <Link href="/register">
+                <a>Get started</a>
+              </Link>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div className="absolute z-10 w-full bg-blue-100">
         <Seperator />
       </div>
-      <div className="relative pb-16 overflow-hidden bg-gray-50 lg:pb-24">
-        <div className="relative max-w-xl px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-screen-xl">
+      <div className="relative pt-48 pb-16 overflow-hidden lg:pt-64 xl:pt-96 bg-gray-50 lg:pb-24">
+        <div className="relative z-20 max-w-xl px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-screen-xl">
           <div className="relative justify-between lg:flex lg:space-x-8 lg:items-center">
             <div className="relative lg:w-3/5">
               <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-3xl sm:leading-9">
@@ -55,104 +58,76 @@ const Index = () => {
 
               <ul className="mt-10">
                 <li>
-                  <div className="flex">
+                  <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <div className="flex items-center justify-center w-12 h-12 text-white rounded-md bg-primary">
                         <svg
+                          fill="currentColor"
                           className="w-6 h-6"
-                          stroke="currentColor"
-                          fill="none"
-                          viewBox="0 0 24 24"
+                          viewBox="0 0 20 20"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                          />
+                          <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
                         </svg>
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6 text-gray-900">
-                        Competitive exchange rates
+                        Simple to use drag and drop form builder
                       </h5>
-                      <p className="mt-2 text-base leading-6 text-gray-500">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Maiores impedit perferendis suscipit eaque, iste
-                        dolor cupiditate blanditiis ratione.
-                      </p>
                     </div>
                   </div>
                 </li>
                 <li className="mt-10">
-                  <div className="flex">
+                  <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <div className="flex items-center justify-center w-12 h-12 text-white rounded-md bg-primary">
                         <svg
+                          fill="currentColor"
                           className="w-6 h-6"
-                          stroke="currentColor"
-                          fill="none"
-                          viewBox="0 0 24 24"
+                          viewBox="0 0 20 20"
                         >
+                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                           <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                          />
+                            fillRule="evenodd"
+                            d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                            clipRule="evenodd"
+                          ></path>
                         </svg>
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6 text-gray-900">
-                        No hidden fees
+                        Easily view form responses
                       </h5>
-                      <p className="mt-2 text-base leading-6 text-gray-500">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Maiores impedit perferendis suscipit eaque, iste
-                        dolor cupiditate blanditiis ratione.
-                      </p>
                     </div>
                   </div>
                 </li>
                 <li className="mt-10">
-                  <div className="flex">
+                  <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <div className="flex items-center justify-center w-12 h-12 text-white rounded-md bg-primary">
                         <svg
+                          fill="currentColor"
                           className="w-6 h-6"
-                          stroke="currentColor"
-                          fill="none"
-                          viewBox="0 0 24 24"
+                          viewBox="0 0 20 20"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M13 10V3L4 14h7v7l9-11h-7z"
-                          />
+                          <path d="M5 12a1 1 0 102 0V6.414l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L5 6.414V12zM15 8a1 1 0 10-2 0v5.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 13.586V8z"></path>
                         </svg>
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6 text-gray-900">
-                        Transfers are instant
+                        Easy to understand form analytics
                       </h5>
-                      <p className="mt-2 text-base leading-6 text-gray-500">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Maiores impedit perferendis suscipit eaque, iste
-                        dolor cupiditate blanditiis ratione.
-                      </p>
                     </div>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <div className="relative mt-10 -mx-4 lg:mt-0">
+            <div className="relative px-5 mt-10 -mx-4 lg:mt-0 lg:px-0">
               <img
-                className="relative mx-auto transform skew-y-3 rounded-lg bounce"
+                className="relative z-20 mx-auto transform skew-y-3 rounded-lg bounce "
                 width="750"
                 src="app.png"
                 alt=""
