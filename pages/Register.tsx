@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Register = () => {
   return (
     <div className="flex min-h-screen">
@@ -18,7 +20,9 @@ const Register = () => {
         <p>
           Or{" "}
           <span className="mt-2 font-bold cursor-pointer text-primary">
-            log in to your account
+            <Link href="/login">
+              <a>log in to your account</a>
+            </Link>
           </span>
         </p>
 
