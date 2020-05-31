@@ -4,6 +4,7 @@ import Blob1 from "../components/blobs/Blob1";
 import Blob2 from "../components/blobs/Blob2";
 import ShapesPattern from "../components/patterns/ShapesPattern";
 import Footer from "../components/index/Footer";
+import Seperator from "../components/blobs/Seperator";
 
 const Index = () => {
   return (
@@ -41,9 +42,12 @@ const Index = () => {
         </span>
       </div>
 
-      <div className="py-16 overflow-hidden lg:py-24">
+      <div>
+        <Seperator />
+      </div>
+      <div className="relative pb-16 overflow-hidden bg-gray-50 lg:pb-24">
         <div className="relative max-w-xl px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-screen-xl">
-          <div className="relative justify-between mt-12 lg:mt-24 lg:flex lg:space-x-8 lg:items-center">
+          <div className="relative justify-between lg:flex lg:space-x-8 lg:items-center">
             <div className="relative lg:w-3/5">
               <h4 className="text-2xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-3xl sm:leading-9">
                 Start building forms today
