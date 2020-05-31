@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Transition from "../Transition";
+import Link from "next/link";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -43,20 +44,18 @@ const Navbar = () => {
 
             <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
               <span className="inline-flex mr-3 rounded-md shadow">
-                <a
-                  href="/"
-                  className="inline-flex items-center px-8 py-2 font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary text-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-gray-700"
-                >
-                  Join
-                </a>
+                <Link href="/register">
+                  <a className="inline-flex items-center px-8 py-2 font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary text-md hover:bg-yellow-600 focus:outline-none focus:border-yellow-700 focus:shadow-outline-blue active:bg-yellow-800">
+                    Join
+                  </a>
+                </Link>
               </span>
               <span className="inline-flex">
-                <a
-                  href="/"
-                  className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-gray-600 transition duration-150 ease-in-out border border-transparent hover:text-gray-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-gray-700"
-                >
-                  Log in
-                </a>
+                <Link href="/login">
+                  <a className="inline-flex items-center px-4 py-2 text-base font-medium leading-6 text-gray-600 transition duration-150 ease-in-out border border-transparent hover:text-gray-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-gray-700">
+                    Log in
+                  </a>
+                </Link>
               </span>
             </div>
           </nav>

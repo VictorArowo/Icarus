@@ -34,14 +34,14 @@ const Index = () => {
           </div>
 
           <span className="inline-flex mt-16 shadow-sm">
-            <button
-              type="button"
-              className="inline-flex items-center px-12 py-5 text-xl font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-            >
-              <Link href="/register">
+            <Link href="/register">
+              <button
+                type="button"
+                className="inline-flex items-center px-12 py-5 text-xl font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-yellow-600 focus:outline-none focus:border-yellow-700 focus:shadow-outline-blue active:bg-yellow-800"
+              >
                 <a>Get started</a>
-              </Link>
-            </button>
+              </button>
+            </Link>
           </span>
         </div>
       </div>
