@@ -8,21 +8,21 @@ import Seperator from "../components/blobs/Seperator";
 
 const Index = () => {
   return (
-    <div className="bg-gray-50">
+    <div className="overflow-none bg-gray-50">
       <div className="bg-blue-100">
         <Navbar />
         <div className="flex flex-col items-center">
-          <div className="absolute left-0 w-64 h-64 -m-32 opacity-25">
+          <div className="absolute left-0 hidden w-64 h-64 -m-32 opacity-25 md:block">
             <Blob1 />
           </div>
-          <div className="absolute right-0 w-64 h-64 -m-32 opacity-25">
+          <div className="absolute hidden w-64 h-64 -m-32 opacity-25 right-32 md:block">
             <Blob2 />
           </div>
-          <div className="absolute left-0 w-32 h-32 text-gray-300 bottom-64">
+          <div className="absolute left-0 hidden w-32 h-32 text-gray-300 bottom-64 md:block">
             <ShapesPattern />
           </div>
           <div
-            className="text-5xl font-extrabold tracking-wide text-gray-800"
+            className="text-5xl font-extrabold tracking-wide text-center text-gray-800"
             style={{
               textShadow: "4px 2px 3px rgba(150, 150, 150, 1)",
             }}

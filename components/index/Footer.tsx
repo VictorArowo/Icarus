@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
           <p className="text-base leading-6 text-center text-gray-400">
-            &copy; 2020 markedit. Built with{" "}
+            &copy; 2020 icarus. Built with{" "}
             <span aria-label="heart" role="img">
               ❤️
             </span>{" "}

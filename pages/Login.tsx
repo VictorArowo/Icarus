@@ -56,9 +56,9 @@ const Login = ({ token }: { token: string }) => {
     <div className="flex min-h-screen">
       <img
         src="https://images.unsplash.com/photo-1517817748493-49ec54a32465?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-        className="object-cover w-6/12 bg-gray-800 "
+        className="hidden object-cover w-6/12 bg-gray-800 md:inline-block"
       />
-      <div className="flex-shrink-0 w-6/12 px-20 mt-32 min-w-96">
+      <div className="flex-shrink-0 w-full px-5 mt-32 lg:px-20 lg:w-6/12 min-w-96">
         <div className="flex items-center -ml-3">
           <img className="w-auto h-16" src="/logo.png" alt="" />
           <span className="text-2xl font-bold tracking-widest text-primary font-header">
