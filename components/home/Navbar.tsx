@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Transition from "../Transition";
 import Link from "next/link";
+import Transition from "../Transition";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);

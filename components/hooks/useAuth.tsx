@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+
 import { AuthContext } from "../../context/AuthenticationContext";
 
 const useAuth = ({ token }: any) => {

@@ -1,18 +1,17 @@
 import React, { useState, useContext } from "react";
-import useSwr from "swr";
-import { useRouter } from "next/dist/client/router";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import nextCookie from "next-cookies";
-import { Element } from "../utils/form";
-import Footer from "../components/respondent/Footer";
+
 import Dropdown from "../components/respondent/Dropdown";
 import YesNoToggle from "../components/respondent/YesNoToggle";
-import ReactDatePicker from "react-datepicker";
 import DateComponent from "../components/respondent/DateComponent";
 import TimeComponent from "../components/respondent/TimeComponent";
-import { FormContext } from "../context/FormContext";
-import ArrowLeftIcon from "../icons/ArrowLeftIcon";
 import useAuth from "../components/hooks/useAuth";
+
+import { FormContext } from "../context/FormContext";
+
+import ArrowLeftIcon from "../icons/ArrowLeftIcon";
 
 interface Props {}
 

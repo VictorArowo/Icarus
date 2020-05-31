@@ -1,18 +1,18 @@
-import ArrowLeftIcon from "../../icons/ArrowLeftIcon";
-import Button from "../Button";
-import ShareIcon from "../../icons/ShareIcon";
-import SaveIcon from "../../icons/SaveIcon";
-import ToggleIcon from "../../icons/ToggleIcon";
 import { useContext, useState } from "react";
-import { FormContext } from "../../context/FormContext";
-import useSWR, { mutate } from "swr";
-import fetcher from "../../utils/fetcher";
-import { useToast } from "../../utils/toast";
-import { AuthContext } from "../../context/AuthenticationContext";
-import EyeIcon from "../../icons/EyeIcon";
 import { useRouter } from "next/router";
+
+import Button from "../Button";
 import Editable from "../Editable";
 import Loading from "../Loading";
+
+import SaveIcon from "../../icons/SaveIcon";
+import ArrowLeftIcon from "../../icons/ArrowLeftIcon";
+import EyeIcon from "../../icons/EyeIcon";
+
+import { FormContext } from "../../context/FormContext";
+import { AuthContext } from "../../context/AuthenticationContext";
+
+import { useToast } from "../../utils/toast";
 
 const Topbar = () => {
   const context = useContext(FormContext);

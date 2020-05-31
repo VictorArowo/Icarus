@@ -1,5 +1,6 @@
-import Navbar from "../components/home/Navbar";
 import Link from "next/link";
+
+import Navbar from "../components/home/Navbar";
 import Blob1 from "../components/blobs/Blob1";
 import Blob2 from "../components/blobs/Blob2";
 import ShapesPattern from "../components/patterns/ShapesPattern";

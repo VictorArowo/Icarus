@@ -1,16 +1,18 @@
 import React, { useEffect, useContext, useState } from "react";
-import Layout from "../components/Layout/Layout";
 import nextCookie from "next-cookies";
-import useAuth from "../components/hooks/useAuth";
-import { NextPageContext } from "next";
-import { AuthContext } from "../context/AuthenticationContext";
 import useSWR from "swr";
-import fetcher from "../utils/fetcher";
+import { useRouter } from "next/router";
+
+import Layout from "../components/Layout/Layout";
+import useAuth from "../components/hooks/useAuth";
 import SingleForm from "../components/forms/SingleForm";
 import Loading from "../components/Loading";
-import { useRouter } from "next/router";
-import { FormState, Element } from "../utils/form";
+
+import { AuthContext } from "../context/AuthenticationContext";
 import { SelectedFormContext } from "../context/SelectedFormContext";
+
+import fetcher from "../utils/fetcher";
+import { Element } from "../utils/form";
 
 const Forms = ({ token }: any) => {
   token = token || localStorage.getItem("token");

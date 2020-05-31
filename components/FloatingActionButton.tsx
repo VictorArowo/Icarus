@@ -3,7 +3,7 @@ import PlusIcon from "../icons/PlusIcon";
 
 const FloatingActionButton = () => {
   return (
-    <button className="absolute bottom-10 right-10 w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white focus:outline-none hover:opacity-75 transition duration-150 focus:shadow-outline shadow-xl">
+    <button className="absolute flex items-center justify-center w-16 h-16 text-white transition duration-150 rounded-full shadow-xl bottom-10 right-10 bg-primary focus:outline-none hover:bg-yellow-600 focus:border-yellow-700 focus:shadow-outline-blue active:bg-yellow-800">
       <div className="w-7 h-7">
         <PlusIcon />
       </div>
