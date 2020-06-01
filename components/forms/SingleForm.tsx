@@ -54,19 +54,6 @@ const SingleForm: React.FC<Props> = ({
                 </div>
               </div>
             </div>
-            <div className="flex items-center">
-              <span className="inline-flex shadow-sm">
-                <button
-                  type="button"
-                  className="inline-flex items-center px-2 text-sm font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-                >
-                  <Link href="/">
-                    <a>Edit</a>
-                  </Link>
-                </button>
-              </span>
-              <div className="ml-5">More</div>
-            </div>
           </div>
         </div>
       </li>
