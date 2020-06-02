@@ -3,14 +3,10 @@ import cookies from "js-cookie";
 import Transition from "../Transition";
 import DarkModeToggle from "./DarkModeToggle";
 import HomeIcon from "../../icons/HomeIcon";
-import TeamIcon from "../../icons/TeamIcon";
 import BookIcon from "../../icons/BookIcon";
-import ReportsIcon from "../../icons/ReportsIcon";
 import SettingsIcon from "../../icons/SettingsIcon";
-import classNames from "../../utils/classNames";
 import SidebarItem from "./SidebarItem";
 import UserIcon from "../../icons/UserIcon";
-import PlusIcon from "../../icons/PlusIcon";
 import { useRouter } from "next/router";
 import SignoutIcon from "../../icons/SignoutIcon";
 
@@ -38,8 +34,8 @@ const Sidebar: React.FC<Props> = ({
       icon: <BookIcon />,
     },
     {
-      name: "Reports",
-      icon: <ReportsIcon />,
+      name: "Settings",
+      icon: <SettingsIcon />,
     },
   ];
 

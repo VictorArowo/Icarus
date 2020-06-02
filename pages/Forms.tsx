@@ -46,7 +46,7 @@ const Forms = ({ token }: any) => {
     <Layout>
       <div>{(!isAuthenticated || !data) && <Loading />}</div>
 
-      <h1 className="text-3xl font-extrabold text-gray-200">Your forms</h1>
+      <h1 className="text-2xl font-bold text-gray-200">Your forms</h1>
 
       <div>
         {forms &&
