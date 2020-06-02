@@ -41,14 +41,6 @@ const Sidebar: React.FC<Props> = ({
       name: "Reports",
       icon: <ReportsIcon />,
     },
-    {
-      name: "Teams",
-      icon: <TeamIcon />,
-    },
-    {
-      name: "Settings",
-      icon: <SettingsIcon />,
-    },
   ];
 
   const handleSignout = () => {
