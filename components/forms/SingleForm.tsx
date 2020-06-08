@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Element } from "../../utils/form";
+import ActivityToggle from "./ActivityToggle";
 
 interface Props {
   form: {
@@ -8,6 +9,7 @@ interface Props {
     title: string;
     description: string;
     responses: Record<string, string>[];
+    isActive: boolean;
   };
 }
 

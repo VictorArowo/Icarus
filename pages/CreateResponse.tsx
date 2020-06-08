@@ -25,7 +25,7 @@ const FormResponse = () => {
           Form successfully created
         </h4>
 
-        <p className="flex flex-col items-center mt-10 text-gray-400 md:flex-row">
+        <div className="flex flex-col items-center mt-10 text-gray-400 md:flex-row">
           Shareable url:{"  "}
           <div className="flex items-center">
             <a
@@ -42,7 +42,7 @@ const FormResponse = () => {
               <ClipboardIcon />
             </div>
           </div>
-        </p>
+        </div>
         <span className="inline-flex mt-12 rounded-md shadow-sm">
           <button
             type="button"

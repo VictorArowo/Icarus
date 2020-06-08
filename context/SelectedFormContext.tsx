@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Element } from "../utils/form";
 
-interface Form {
+export interface Form {
   body: Element[];
   _id: string;
   created: string;
   title: string;
   description: string;
   responses: Record<string, string>[];
+  isActive: boolean;
 }
 
 interface Context {
@@ -20,7 +21,6 @@ const SelectedFormProvider: React.FC = ({ children }) => {
   const [selected, setSelected] = useState<Form>({} as Form);
 
   const changeSelected = (form: Form) => {
-    console.log("sike");
     setSelected(form);
   };
 

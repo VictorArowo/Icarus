@@ -30,6 +30,7 @@ const Forms = ({ token }: any) => {
       title: string;
       description: string;
       responses: Record<string, string>[];
+      isActive: boolean;
     }[]
   >([]);
   const router = useRouter();

@@ -3,6 +3,7 @@ import { useEffect, useContext, useMemo } from "react";
 import { SelectedFormContext } from "../../context/SelectedFormContext";
 import ArrowLeftIcon from "../../icons/ArrowLeftIcon";
 import { useRouter } from "next/router";
+import ActivityToggle from "../../components/forms/ActivityToggle";
 
 const FormDetails = () => {
   const { selected } = useContext(SelectedFormContext);
@@ -31,6 +32,12 @@ const FormDetails = () => {
         </div>
         <h1 className="text-3xl text-center text-gray-100">{selected.title}</h1>
         <h3 className="text-center text-gray-400">{selected.description}</h3>
+        <div className="flex justify-end">
+          <ActivityToggle
+            initialState={selected.isActive}
+            selected={selected}
+          />
+        </div>
         <div className="mt-10">
           {Object.keys(selected).length > 0 ? (
             selected.body.map((question, index) => (
