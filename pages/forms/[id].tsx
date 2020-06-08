@@ -4,10 +4,14 @@ import { SelectedFormContext } from "../../context/SelectedFormContext";
 import ArrowLeftIcon from "../../icons/ArrowLeftIcon";
 import { useRouter } from "next/router";
 import ActivityToggle from "../../components/forms/ActivityToggle";
+import ClipboardIcon from "../../icons/ClipboardIcon";
+import { useToast } from "../../utils/toast";
 
 const FormDetails = () => {
   const { selected } = useContext(SelectedFormContext);
+  const { addToast } = useToast();
   const router = useRouter();
+
   const responses = useMemo(() => {
     return selected.responses.reduce<Record<string, string[]>>((acc, curr) => {
       Object.keys(curr).map((key) => {
@@ -18,6 +22,11 @@ const FormDetails = () => {
       return acc;
     }, {});
   }, [selected]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(`http://localhost:3000/f/${selected._id}`);
+    addToast("Copied to clipboard");
+  };
 
   return (
     <Layout>
@@ -32,7 +41,25 @@ const FormDetails = () => {
         </div>
         <h1 className="text-3xl text-center text-gray-100">{selected.title}</h1>
         <h3 className="text-center text-gray-400">{selected.description}</h3>
-        <div className="flex justify-end">
+        <div className="flex items-center justify-between mt-10">
+          <div className="flex flex-col items-center text-gray-400 md:flex-row">
+            Shareable url:{"  "}
+            <div className="flex items-center">
+              <a
+                href={`http://localhost:3000/f/${selected._id}`}
+                target="_blank"
+                className="ml-2 text-sm whitespace-normal text-primary hover:text-yellow-600"
+              >
+                http://localhost:3000/f/{selected._id}
+              </a>
+              <div
+                className="w-6 h-6 ml-1 text-gray-400 cursor-pointer hover:text-gray-500"
+                onClick={handleCopy}
+              >
+                <ClipboardIcon />
+              </div>
+            </div>
+          </div>
           <ActivityToggle
             initialState={selected.isActive}
             selected={selected}
