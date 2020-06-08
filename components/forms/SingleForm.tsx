@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Element } from "../../utils/form";
 import ActivityToggle from "./ActivityToggle";
+import { format } from "url";
 
 interface Props {
   form: {
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const SingleForm: React.FC<Props> = ({
-  form: { responses, created, title },
+  form: { responses, created, title, isActive },
 }) => {
   return (
     <div>
@@ -54,6 +55,17 @@ const SingleForm: React.FC<Props> = ({
                     {responses.length} submissions
                   </div>
                 </div>
+              </div>
+              <div>
+                {isActive ? (
+                  <div className="inline-flex items-center justify-center w-20 py-0.5 rounded-full text-sm font-medium leading-5 bg-green-100 text-green-800">
+                    Active
+                  </div>
+                ) : (
+                  <div className="inline-flex items-center w-20 justify-center py-0.5 rounded-full text-sm font-medium leading-5 bg-red-100 text-red-800">
+                    Disabled
+                  </div>
+                )}
               </div>
             </div>
           </div>
