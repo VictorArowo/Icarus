@@ -32,6 +32,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
       break;
 
+    case "PUT":
+      try {
+        await Form(await connection()).findOneAndUpdate(
+          { _id: id },
+          req.body,
+          { upsert: true, new: true },
+          (error, doc) => {
+            if (error) res.status(500).json(error);
+            res.status(201).json(doc);
+          }
+        );
+
+        break;
+      } catch (error) {
+        res.status(500).json(error);
+      }
     default:
       res.status(500).json({ error: "Invalid HTTP verb" });
       break;

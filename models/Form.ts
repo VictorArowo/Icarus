@@ -27,6 +27,7 @@ export interface IForm extends Document {
   user: string;
   created: string;
   responses: any[];
+  isActive: boolean;
 }
 
 const formSchema: Schema = new Schema({
@@ -50,6 +51,7 @@ const formSchema: Schema = new Schema({
   title: String,
   description: String,
   responses: [SchemaTypes.Mixed],
+  isActive: Boolean,
 });
 
 const collectionName = "Form";

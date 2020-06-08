@@ -13,6 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const form = await Form(await connection()).create({
           ...req.body,
           responses: [],
+          isActive: true,
         });
         res.status(201).json(form);
         break;
