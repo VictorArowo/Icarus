@@ -261,8 +261,9 @@ const Respondent: NextPage<Props> = ({ form }) => {
 export async function getStaticPaths() {
   const res = await fetch("http://localhost:3000/api/forms");
   const forms = await res.json();
+  const activeForms = forms.filter((form: any) => form.isActive);
 
-  const paths = forms.map((form: any) => `/f/${form._id}`);
+  const paths = activeForms.map((form: any) => `/f/${form._id}`);
 
   return { paths, fallback: false };
 }
