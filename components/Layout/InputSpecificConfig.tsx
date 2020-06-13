@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import uuid from "react-uuid";
 import { Element } from "../../utils/form";
 import { FormContext } from "../../context/FormContext";
@@ -20,6 +20,7 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
     const elementId = elem.id;
 
     setForm({
+      ...form,
       "1": form["1"].map((e, idx) =>
         e.id === elementId
           ? {
@@ -40,6 +41,7 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
     const elementId = elem.id;
 
     setForm({
+      ...form,
       "1": form["1"].map((e, idx) =>
         e.id === elementId
           ? {
@@ -57,6 +59,7 @@ const InputSpecificConfig: React.FC<Props> = ({ elem }) => {
     const elementId = elem.id;
 
     setForm({
+      ...form,
       "1": form["1"].map((e, idx) =>
         e.id === elementId
           ? {
