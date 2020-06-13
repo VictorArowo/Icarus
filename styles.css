@@ -5,3 +5,83 @@
 .react-beatiful-dnd-copy ~ [data-rbd-placeholder-context-id] {
   display: none !important;
 }
+
+.bounce {
+  -moz-animation: 6s ease-in-out infinite linear bounce;
+  -o-animation: 6s ease-in-out infinite linear bounce;
+  -webkit-animation: 6s ease-in-out infinite normal none running bounce;
+  animation: 6s ease-in-out infinite normal none running bounce;
+  transition: 6s ease-in-out transform;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+
+@-o-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+
+@-ms-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+@keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    bottom: 0px;
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+    bottom: 15px;
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    bottom: 0px;
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+  }
+}

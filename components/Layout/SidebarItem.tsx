@@ -14,7 +14,6 @@ const SidebarItem: React.FC<Props> = ({ name, icon, index }) => {
   return (
     <Link href={`/${name.toLowerCase()}`}>
       <a
-        href="#"
         className={classNames(
           " group flex items-center px-2 py-2 mb-3 text-base leading-6 font-medium rounded-md transition ease-in-out duration-150",
           router.pathname === `/${name.toLowerCase()}`

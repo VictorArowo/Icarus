@@ -11,7 +11,7 @@ const FormResponse = () => {
   const { addToast } = useToast();
 
   const handleBack = () => {
-    router.push("/dashboard");
+    router.push("/forms");
   };
 
   const handleCopy = () => {

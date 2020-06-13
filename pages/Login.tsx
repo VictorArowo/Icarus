@@ -46,7 +46,7 @@ const Login = ({ token }: { token: string }) => {
         .then((res) => res.json())
         .then((data) => {
           cookie.set("token", data.access_token);
-          router.push("/dashboard");
+          router.push("/forms");
         })
         .catch((error) => addToast(error.message));
     } catch (error) {
