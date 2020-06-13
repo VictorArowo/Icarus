@@ -13,6 +13,8 @@ import { SelectedFormContext } from "../context/SelectedFormContext";
 
 import fetcher from "../utils/fetcher";
 import { Element } from "../utils/form";
+import Link from "next/link";
+import FloatingActionButton from "../components/FloatingActionButton";
 
 const Forms = ({ token }: any) => {
   token = token || localStorage.getItem("token");
@@ -46,7 +48,11 @@ const Forms = ({ token }: any) => {
   return (
     <Layout>
       <div>{(!isAuthenticated || !data) && <Loading />}</div>
-
+      <Link href="/create">
+        <a href="">
+          <FloatingActionButton />
+        </a>
+      </Link>
       <h1 className="text-2xl font-bold text-gray-200">Your forms</h1>
 
       <div>
