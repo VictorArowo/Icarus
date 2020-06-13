@@ -26,10 +26,6 @@ const Sidebar: React.FC<Props> = ({
   const router = useRouter();
   const navItems = [
     {
-      name: "Dashboard",
-      icon: <HomeIcon />,
-    },
-    {
       name: "Forms",
       icon: <BookIcon />,
     },
