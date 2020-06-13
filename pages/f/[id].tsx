@@ -14,6 +14,8 @@ import Loading from "../../components/Loading";
 interface Props {
   form: {
     body: Element[];
+    title: string;
+    description: string;
   };
 }
 
@@ -63,21 +65,19 @@ const Respondent: NextPage<Props> = ({ form }) => {
     <div className="overflow-auto bg-primary-background">
       {loading && <Loading />}
       <div className="max-w-5xl min-h-screen mx-auto">
-        <h1 className="pt-10 text-4xl font-extrabold text-center text-primary-text">
-          Form Title Lorem
+        <h1 className="pt-10 text-2xl font-extrabold text-center md:text-4xl text-primary-text">
+          {form.title}
         </h1>
-        <h4 className="mt-3 text-xl font-medium text-center text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eum
-          veritatis consequuntur quaerat neque est eligendi ex magni delectus
-          nulla vel.
+        <h4 className="mt-3 font-medium text-center text-gray-300 text-md md:text-xl">
+          {form.description}
         </h4>
-        <div className="px-10 mx-auto mb-32">
+        <div className="px-3 mx-auto mb-32 md:px-10">
           {form.body.map((element) => {
             switch (element.text) {
               case "Single-Line Text":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <input
@@ -92,7 +92,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Number":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <input
@@ -107,7 +107,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Multi-Line Text":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <textarea
@@ -121,7 +121,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Multiple Choice":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <div>
@@ -164,7 +164,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Yes/No":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <YesNoToggle
@@ -179,7 +179,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Date":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <DateComponent
@@ -193,7 +193,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Time":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <TimeComponent
@@ -207,7 +207,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Email Address":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <input
@@ -222,7 +222,7 @@ const Respondent: NextPage<Props> = ({ form }) => {
               case "Website":
                 return (
                   <div key={element.id}>
-                    <p className="mt-5 text-xl text-gray-200">
+                    <p className="mt-5 mb-1 text-gray-200 text-md md:text-xl">
                       {element.title}
                     </p>
                     <input
@@ -239,13 +239,11 @@ const Respondent: NextPage<Props> = ({ form }) => {
             }
           })}
 
-          <span
-            className="flex items-center justify-center mt-12 rounded-md shadow-sm"
-            onClick={handleSubmit}
-          >
+          <span className="flex items-center justify-center mt-12">
             <button
               type="button"
-              className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+              onClick={handleSubmit}
+              className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-yellow-600 focus:outline-none focus:border-yellow-700 focus:shadow-outline-blue active:bg-yellow-800"
             >
               Submit
             </button>

@@ -69,10 +69,6 @@ const InputConfig: React.FC<Props> = () => {
               className="mt-2 bg-transparent border border-gray-400 form-textarea"
             />
           </div>
-          <div className="py-5 pl-3 mb-1 font-bold border-b text-primary-text border-sec-background">
-            <div className="text-xs uppercase">Required</div>
-            <DarkModeToggle />
-          </div>
           <InputSpecificConfig elem={data} />
         </div>
       ) : (

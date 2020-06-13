@@ -34,7 +34,7 @@ const Layout: React.FC = ({ children }) => {
             onClick={openSidebar}
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-gray-200 hover:text-gray-400"
               stroke="currentColor"
               fill="none"
               viewBox="0 0 24 24"

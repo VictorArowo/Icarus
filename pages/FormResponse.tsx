@@ -20,7 +20,7 @@ const FormResponse = () => {
         <span className="inline-flex mt-12 rounded-md shadow-sm">
           <button
             type="button"
-            className="inline-flex items-center px-4 py-3 font-medium font-bold leading-5 transition duration-150 ease-in-out border border-transparent rounded-md text-md text-gray-50 bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            className="inline-flex items-center px-4 py-3 font-medium font-bold leading-5 transition duration-150 ease-in-out border border-transparent rounded-md text-md text-gray-50 bg-primary hover:bg-yellow-600 focus:outline-none focus:border-yellow-700 focus:shadow-outline-blue active:bg-yellow-800"
             onClick={handleBack}
           >
             Submit another response

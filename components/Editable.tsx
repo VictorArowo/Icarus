@@ -39,7 +39,7 @@ const Editable: React.FC<Props> = ({ text, handleSubmit, className, name }) => {
           ref={inputRef}
           onChange={handleChange}
           onBlur={handleBlur}
-          className="w-auto ml-10 text-white bg-transparent form-input"
+          className="ml-10 text-white bg-transparent w-72 form-input"
         />
       ) : (
         <div className={className} onClick={handleClick}>

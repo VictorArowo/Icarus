@@ -113,27 +113,15 @@ const Sidebar: React.FC<Props> = ({
                 </nav>
               </div>
               <div>
-                <DarkModeToggle />
-              </div>
-              <div className="flex flex-shrink-0 p-4 border-t border-gray-200">
-                <a
-                  href="#"
-                  className="flex-shrink-0 block group focus:outline-none"
+                <button
+                  className="flex mb-5 ml-3 text-white hover:text-gray-400"
+                  onClick={handleSignout}
                 >
-                  <div className="flex items-center">
-                    <div className="inline-block w-10 h-10 rounded-full text-primary-text">
-                      <UserIcon />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-base font-medium leading-6 text-primary-text group-hover:text-gray-900">
-                        Victor Arowo
-                      </p>
-                      <p className="text-sm font-medium leading-5 transition duration-150 ease-in-out text-secondary-text group-hover:text-gray-700 group-focus:underline">
-                        View profile
-                      </p>
-                    </div>
+                  <div className="w-6 h-6 mr-2 text-red-600">
+                    <SignoutIcon />
                   </div>
-                </a>
+                  <p>Sign out</p>
+                </button>
               </div>
             </div>
           </Transition>
@@ -176,23 +164,6 @@ const Sidebar: React.FC<Props> = ({
               </div>
               <p>Sign out</p>
             </button>
-          </div>
-          <div className="flex flex-shrink-0 p-4 border-t border-sec-background bg-primary-background">
-            <a href="#" className="flex-shrink-0 block w-full group">
-              <div className="flex items-center">
-                <div className="inline-block w-10 h-10 rounded-full text-primary-text">
-                  <UserIcon />
-                </div>
-                <div className="ml-3">
-                  <p className="text-base font-medium leading-6 text-primary-text group-hover:text-gray-900">
-                    Victor Arowo
-                  </p>
-                  <p className="text-sm font-medium leading-5 transition duration-150 ease-in-out text-secondary-text group-hover:text-gray-700 group-focus:underline">
-                    View profile
-                  </p>
-                </div>
-              </div>
-            </a>
           </div>
         </div>
       </div>
